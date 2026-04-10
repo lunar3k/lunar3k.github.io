@@ -65,6 +65,19 @@
             border-radius: 10px;
             animation: loadBar 1.5s ease forwards;
         }
+        .loading-percent {
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            color: #6c8eff;
+            font-weight: 600;
+            letter-spacing: 2px;
+        }
+        .loading-tip {
+            margin-top: 0.8rem;
+            font-size: 0.75rem;
+            color: #4a5680;
+            font-style: italic;
+        }
         @keyframes loadBar {
             0% { width: 0%; }
             50% { width: 70%; }
@@ -1030,6 +1043,256 @@
             transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
         }
 
+        /* Credits Section */
+        .credits-section {
+            padding: 4rem 0 2rem;
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            padding: 3rem 0 4rem;
+        }
+        .faq-list {
+            max-width: 750px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        .faq-item {
+            background: rgba(15, 18, 35, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(100, 140, 255, 0.15);
+            border-radius: 1.2rem;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+        .faq-item:hover {
+            border-color: rgba(100, 140, 255, 0.35);
+        }
+        .faq-question {
+            padding: 1.2rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 1.05rem;
+            color: #e2e8ff;
+            transition: 0.2s;
+            user-select: none;
+        }
+        .faq-question:hover {
+            color: white;
+        }
+        .faq-question i {
+            font-size: 0.8rem;
+            color: #6c8eff;
+            transition: transform 0.3s;
+        }
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
+        }
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), padding 0.3s;
+            padding: 0 1.5rem;
+            color: #8a9cc0;
+            line-height: 1.7;
+            font-size: 0.95rem;
+        }
+        .faq-item.active .faq-answer {
+            max-height: 200px;
+            padding: 0 1.5rem 1.2rem;
+        }
+
+        /* Changelog Ticker */
+        .changelog-ticker {
+            overflow: hidden;
+            background: rgba(10, 12, 21, 0.6);
+            border-top: 1px solid rgba(100, 140, 255, 0.1);
+            border-bottom: 1px solid rgba(100, 140, 255, 0.1);
+            padding: 0.7rem 0;
+            position: relative;
+        }
+        .changelog-ticker::before,
+        .changelog-ticker::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            width: 100px;
+            height: 100%;
+            z-index: 2;
+            pointer-events: none;
+        }
+        .changelog-ticker::before {
+            left: 0;
+            background: linear-gradient(90deg, #0a0c15, transparent);
+        }
+        .changelog-ticker::after {
+            right: 0;
+            background: linear-gradient(-90deg, #0a0c15, transparent);
+        }
+        .ticker-track {
+            display: flex;
+            gap: 3rem;
+            animation: tickerScroll 30s linear infinite;
+            white-space: nowrap;
+            width: max-content;
+        }
+        .ticker-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+            color: #8a9cc0;
+            flex-shrink: 0;
+        }
+        .ticker-item .ticker-tag {
+            background: linear-gradient(95deg, #3b6eff, #7c4eff);
+            color: white;
+            padding: 0.15rem 0.6rem;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+        .ticker-tag.fix { background: linear-gradient(95deg, #ef4444, #f97316); }
+        .ticker-tag.new { background: linear-gradient(95deg, #10b981, #06b6d4); }
+        @keyframes tickerScroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        /* Glowing Section Separator */
+        .glow-separator {
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(100, 140, 255, 0.3), rgba(124, 78, 255, 0.3), transparent);
+            margin: 1rem 0;
+            position: relative;
+        }
+        .glow-separator::after {
+            content: '';
+            position: absolute;
+            top: -3px;
+            left: 0;
+            width: 100%;
+            height: 7px;
+            background: linear-gradient(90deg, transparent, rgba(100, 140, 255, 0.08), rgba(124, 78, 255, 0.08), transparent);
+            filter: blur(4px);
+        }
+
+        /* Typing cursor animation */
+        .typing-cursor {
+            display: inline-block;
+            width: 3px;
+            height: 1em;
+            background: #6c8eff;
+            margin-left: 4px;
+            animation: blink 0.8s step-end infinite;
+            vertical-align: text-bottom;
+        }
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        /* Keyboard hint */
+        .kbd-hint {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            background: rgba(15, 18, 35, 0.8);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(100, 140, 255, 0.15);
+            padding: 0.5rem 0.9rem;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            color: #6c8eff;
+            z-index: 999;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: all 0.4s;
+            pointer-events: none;
+        }
+        .kbd-hint.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .kbd-hint kbd {
+            background: rgba(59, 110, 255, 0.2);
+            padding: 0.1rem 0.4rem;
+            border-radius: 4px;
+            font-family: 'Inter', monospace;
+            font-weight: 600;
+            margin: 0 2px;
+        }
+        .credits-box {
+            max-width: 700px;
+            margin: 0 auto;
+            background: rgba(15, 18, 35, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(100, 140, 255, 0.2);
+            border-radius: 2rem;
+            padding: 2.5rem;
+            text-align: center;
+        }
+        .credits-box:hover {
+            border-color: rgba(100, 140, 255, 0.4);
+            box-shadow: 0 15px 40px rgba(59, 110, 255, 0.1);
+        }
+        .credits-role {
+            margin-bottom: 1.5rem;
+        }
+        .credits-role-label {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #6c8eff;
+            font-weight: 700;
+            margin-bottom: 0.4rem;
+        }
+        .credits-role-names {
+            font-size: 1.3rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #ffffff, #a5c9ff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .credits-divider {
+            width: 80px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #6c8eff, transparent);
+            margin: 1.5rem auto;
+            border-radius: 10px;
+        }
+        .credits-note {
+            color: #8a9cc0;
+            font-size: 0.9rem;
+            line-height: 1.7;
+            max-width: 550px;
+            margin: 0 auto;
+            font-style: italic;
+        }
+        .btn-credits {
+            background: rgba(20, 30, 55, 0.8);
+            backdrop-filter: blur(4px);
+            border: 1px solid #5f7eff;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            color: white;
+            font-weight: 600;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+        .btn-credits:hover {
+            background: #2d3e6e;
+            transform: translateY(-2px);
+        }
+
         @media (max-width: 780px) {
             .nav-bar { flex-direction: column; gap: 1rem; }
             .hero h2 { font-size: 2.2rem; }
@@ -1040,6 +1303,9 @@
             .footer-links { gap: 1rem; }
             .features-grid, .reviews-grid, .stats-grid, .video-wrapper, .footer-socials { perspective: none; }
             .hero-glow-ring { width: 280px; height: 280px; }
+            .hero-buttons { flex-wrap: wrap; }
+            .kbd-hint { display: none; }
+            .changelog-ticker { display: none; }
         }
 
         /* Header shrink */
@@ -1077,6 +1343,8 @@
 <div class="loading-screen" id="loadingScreen">
     <div class="loading-logo">VESPER CLIENT</div>
     <div class="loading-bar"><div class="loading-bar-fill"></div></div>
+    <div class="loading-percent" id="loadPercent">0%</div>
+    <div class="loading-tip" id="loadTip">Loading modules...</div>
 </div>
 
 <div class="hero-bg"></div>
@@ -1119,6 +1387,7 @@
         <div class="hero-buttons animate-on-scroll delay-200">
             <button class="btn-primary" id="heroDownloadBtn"><i class="fas fa-download"></i> Download Now</button>
             <button class="btn-secondary" id="heroFeaturesBtn">Learn More</button>
+            <button class="btn-credits" id="heroCreditsBtn"><i class="fas fa-heart"></i> Credits</button>
         </div>
     </div>
 
@@ -1127,6 +1396,8 @@
         <div class="section-divider"></div>
         <div class="features-grid" id="featuresGrid"></div>
     </div>
+
+    <div class="glow-separator"></div>
 
     <div class="container stats-section">
         <div class="stats-grid">
@@ -1148,6 +1419,8 @@
             </div>
         </div>
     </div>
+
+    <div class="glow-separator"></div>
 
     <div class="container reviews-section" id="reviews">
         <h2 class="section-title animate-on-scroll" id="reviewsTitle">💬 Community Reviews 💬</h2>
@@ -1212,6 +1485,10 @@
         </div>
     </div>
 
+    </div>
+
+    <div class="glow-separator"></div>
+
     <div class="container video-section" id="video">
         <h2 class="section-title animate-on-scroll" id="videoTitle">🎬 Video Review 🎬</h2>
         <div class="section-divider"></div>
@@ -1223,7 +1500,80 @@
             </div>
         </div>
     </div>
+    <div class="container credits-section" id="credits">
+        <h2 class="section-title animate-on-scroll" id="creditsTitle">🏆 Credits 🏆</h2>
+        <div class="section-divider"></div>
+        <div class="credits-box animate-on-scroll delay-100">
+            <div class="credits-role">
+                <div class="credits-role-label" id="creditsOwnerLabel">Owner</div>
+                <div class="credits-role-names">Lunar3k, Krisper</div>
+            </div>
+            <div class="credits-role">
+                <div class="credits-role-label" id="creditsDevLabel">Developers</div>
+                <div class="credits-role-names">Lunar3k, Krisper, Kotlet</div>
+            </div>
+            <div class="credits-divider"></div>
+            <p class="credits-note" id="creditsNote">Client is based on Thunderhack Recode. AI assists us, but we do a lot of the work ourselves. The ClickGUI concept is inspired by Veltragossa by Mewinggs.</p>
+        </div>
+    </div>
+    <div class="glow-separator"></div>
+    <div class="container faq-section" id="faq">
+        <h2 class="section-title animate-on-scroll" id="faqTitle">❓ FAQ ❓</h2>
+        <div class="section-divider"></div>
+        <div class="faq-list" id="faqList">
+            <div class="faq-item animate-on-scroll">
+                <div class="faq-question" onclick="this.parentElement.classList.toggle('active')">
+                    <span id="faq1q">Is Vesper Client free?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer" id="faq1a">Yes! Vesper Client is completely free. Just join our Discord, get the PIN and download.</div>
+            </div>
+            <div class="faq-item animate-on-scroll delay-100">
+                <div class="faq-question" onclick="this.parentElement.classList.toggle('active')">
+                    <span id="faq2q">Is it safe to use?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer" id="faq2a">Absolutely. Our advanced bypass system ensures no anticheat will detect you. We test on all major servers regularly.</div>
+            </div>
+            <div class="faq-item animate-on-scroll delay-200">
+                <div class="faq-question" onclick="this.parentElement.classList.toggle('active')">
+                    <span id="faq3q">Which Minecraft version does it support?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer" id="faq3a">Currently Vesper Client supports Minecraft 1.21.1. We update to latest versions as soon as possible.</div>
+            </div>
+            <div class="faq-item animate-on-scroll delay-300">
+                <div class="faq-question" onclick="this.parentElement.classList.toggle('active')">
+                    <span id="faq4q">How do I get the download PIN?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer" id="faq4a">Join our Discord server and check the pinned messages. The PIN is posted there for free.</div>
+            </div>
+        </div>
+    </div>
 </main>
+
+<div class="changelog-ticker">
+    <div class="ticker-track" id="tickerTrack">
+        <div class="ticker-item"><span class="ticker-tag new">NEW</span> Added 15 new modules in v2.0.4</div>
+        <div class="ticker-item"><span class="ticker-tag">UPDATE</span> Improved KillAura performance</div>
+        <div class="ticker-item"><span class="ticker-tag fix">FIX</span> Fixed Speed bypass on Hypixel</div>
+        <div class="ticker-item"><span class="ticker-tag new">NEW</span> ClickGUI redesigned</div>
+        <div class="ticker-item"><span class="ticker-tag">UPDATE</span> Better FPS optimization</div>
+        <div class="ticker-item"><span class="ticker-tag fix">FIX</span> Scaffold anti-kick patched</div>
+        <div class="ticker-item"><span class="ticker-tag new">NEW</span> Config sharing system</div>
+        <div class="ticker-item"><span class="ticker-tag">UPDATE</span> Updated to 1.21.1</div>
+        <!-- Duplicate for seamless loop -->
+        <div class="ticker-item"><span class="ticker-tag new">NEW</span> Added 15 new modules in v2.0.4</div>
+        <div class="ticker-item"><span class="ticker-tag">UPDATE</span> Improved KillAura performance</div>
+        <div class="ticker-item"><span class="ticker-tag fix">FIX</span> Fixed Speed bypass on Hypixel</div>
+        <div class="ticker-item"><span class="ticker-tag new">NEW</span> ClickGUI redesigned</div>
+        <div class="ticker-item"><span class="ticker-tag">UPDATE</span> Better FPS optimization</div>
+        <div class="ticker-item"><span class="ticker-tag fix">FIX</span> Scaffold anti-kick patched</div>
+        <div class="ticker-item"><span class="ticker-tag new">NEW</span> Config sharing system</div>
+        <div class="ticker-item"><span class="ticker-tag">UPDATE</span> Updated to 1.21.1</div>
+    </div>
+</div>
 
 <footer>
     <div class="footer-content">
@@ -1244,6 +1594,8 @@
 <button class="scroll-top" id="scrollTopBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})">
     <i class="fas fa-chevron-up"></i>
 </button>
+
+<div class="kbd-hint" id="kbdHint"><kbd>D</kbd> Download &nbsp; <kbd>F</kbd> Features &nbsp; <kbd>Esc</kbd> Close</div>
 
 <div id="toast">Download started!</div>
 
@@ -1337,7 +1689,25 @@
             footerFeatures: "Features",
             footerVideo: "Video",
             footerSupport: "Support",
-            
+
+            // Credits
+            creditsTitle: "🏆 Credits 🏆",
+            creditsOwnerLabel: "Owner",
+            creditsDevLabel: "Developers",
+            creditsNote: "Client is based on Thunderhack Recode. AI assists us, but we do a lot of the work ourselves. The ClickGUI concept is inspired by Veltragossa by Mewinggs.",
+            creditsBtn: "Credits",
+
+            // FAQ
+            faqTitle: "❓ FAQ ❓",
+            faq1q: "Is Vesper Client free?",
+            faq1a: "Yes! Vesper Client is completely free. Just join our Discord, get the PIN and download.",
+            faq2q: "Is it safe to use?",
+            faq2a: "Absolutely. Our advanced bypass system ensures no anticheat will detect you. We test on all major servers regularly.",
+            faq3q: "Which Minecraft version does it support?",
+            faq3a: "Currently Vesper Client supports Minecraft 1.21.1. We update to latest versions as soon as possible.",
+            faq4q: "How do I get the download PIN?",
+            faq4a: "Join our Discord server and check the pinned messages. The PIN is posted there for free.",
+
             // Reviews
             reviewsTitle: "💬 Community Reviews 💬"
         },
@@ -1389,6 +1759,25 @@
             footerFeatures: "Zalety",
             footerVideo: "Wideo",
             footerSupport: "Wsparcie",
+
+            // Credits
+            creditsTitle: "🏆 Twórcy 🏆",
+            creditsOwnerLabel: "Właściciel",
+            creditsDevLabel: "Programiści",
+            creditsNote: "Client jest bazowany na Thunderhack Recode. Pomaga nam AI, jednak dużo robimy sami. Pomysł na ClickGUI mamy od Veltragossa by Mewinggs.",
+            creditsBtn: "Twórcy",
+
+            // FAQ
+            faqTitle: "❓ FAQ ❓",
+            faq1q: "Czy Vesper Client jest darmowy?",
+            faq1a: "Tak! Vesper Client jest całkowicie darmowy. Wejdź na Discorda, weź PIN i pobierz.",
+            faq2q: "Czy jest bezpieczny?",
+            faq2a: "Oczywiście. Nasz zaawansowany system bypass sprawia, że żaden antycheat Cię nie wykryje. Testujemy na wszystkich głównych serwerach.",
+            faq3q: "Jaką wersję Minecrafta wspiera?",
+            faq3a: "Aktualnie Vesper Client wspiera Minecraft 1.21.1. Aktualizujemy do najnowszych wersji jak najszybciej.",
+            faq4q: "Jak zdobyć PIN do pobrania?",
+            faq4a: "Dołącz na Discorda i sprawdź przypięte wiadomości. PIN jest tam za darmo.",
+
             reviewsTitle: "💬 Opinie Społeczności 💬"
         },
         ru: {
@@ -1439,6 +1828,25 @@
             footerFeatures: "Преимущества",
             footerVideo: "Видео",
             footerSupport: "Поддержка",
+
+            // Credits
+            creditsTitle: "🏆 Авторы 🏆",
+            creditsOwnerLabel: "Владелец",
+            creditsDevLabel: "Разработчики",
+            creditsNote: "Клиент основан на Thunderhack Recode. Нам помогает ИИ, но большую часть работы мы делаем сами. Идея ClickGUI вдохновлена Veltragossa от Mewinggs.",
+            creditsBtn: "Авторы",
+
+            // FAQ
+            faqTitle: "❓ FAQ ❓",
+            faq1q: "Vesper Client бесплатный?",
+            faq1a: "Да! Vesper Client полностью бесплатный. Зайдите на наш Discord, получите PIN и скачайте.",
+            faq2q: "Это безопасно?",
+            faq2a: "Абсолютно. Наша продвинутая система обхода гарантирует, что ни один античит вас не обнаружит.",
+            faq3q: "Какую версию Minecraft поддерживает?",
+            faq3a: "Сейчас Vesper Client поддерживает Minecraft 1.21.1. Мы обновляемся до последних версий как можно быстрее.",
+            faq4q: "Как получить PIN для скачивания?",
+            faq4a: "Зайдите на наш Discord сервер и проверьте закреплённые сообщения. PIN там бесплатно.",
+
             reviewsTitle: "💬 Отзывы Сообщества 💬"
         }
     };
@@ -1545,6 +1953,24 @@
         // Reviews
         document.getElementById('reviewsTitle').innerHTML = t.reviewsTitle;
 
+        // Credits
+        document.getElementById('creditsTitle').innerHTML = t.creditsTitle;
+        document.getElementById('creditsOwnerLabel').innerText = t.creditsOwnerLabel;
+        document.getElementById('creditsDevLabel').innerText = t.creditsDevLabel;
+        document.getElementById('creditsNote').innerText = t.creditsNote;
+        document.getElementById('heroCreditsBtn').innerHTML = '<i class="fas fa-heart"></i> ' + t.creditsBtn;
+
+        // FAQ
+        document.getElementById('faqTitle').innerHTML = t.faqTitle;
+        document.getElementById('faq1q').innerText = t.faq1q;
+        document.getElementById('faq1a').innerText = t.faq1a;
+        document.getElementById('faq2q').innerText = t.faq2q;
+        document.getElementById('faq2a').innerText = t.faq2a;
+        document.getElementById('faq3q').innerText = t.faq3q;
+        document.getElementById('faq3a').innerText = t.faq3a;
+        document.getElementById('faq4q').innerText = t.faq4q;
+        document.getElementById('faq4a').innerText = t.faq4a;
+
         // Karty z zaletami
         const featuresData = [
             {title: t.feature1_title, desc: t.feature1_desc, icon: "fa-palette"},
@@ -1601,6 +2027,8 @@
         document.getElementById('features')?.scrollIntoView({ behavior: 'smooth' }));
     document.getElementById('navVideoLink')?.addEventListener('click', () => 
         document.getElementById('video')?.scrollIntoView({ behavior: 'smooth' }));
+    document.getElementById('heroCreditsBtn')?.addEventListener('click', () => 
+        document.getElementById('credits')?.scrollIntoView({ behavior: 'smooth' }));
 
     // Video section is now an iframe embed
 
@@ -1834,6 +2262,74 @@
         btn.appendChild(ripple);
         ripple.addEventListener('animationend', () => ripple.remove());
     });
+
+    // === LOADING SCREEN PERCENTAGE ===
+    (function() {
+        const loadPercent = document.getElementById('loadPercent');
+        const loadTip = document.getElementById('loadTip');
+        const tips = ['Loading modules...', 'Initializing bypass...', 'Preparing UI...', 'Almost ready...'];
+        let p = 0;
+        const interval = setInterval(() => {
+            p += Math.random() * 8 + 2;
+            if (p >= 100) { p = 100; clearInterval(interval); }
+            if (loadPercent) loadPercent.textContent = Math.floor(p) + '%';
+            if (loadTip) loadTip.textContent = tips[Math.min(Math.floor(p / 25), tips.length - 1)];
+        }, 80);
+    })();
+
+    // === KEYBOARD SHORTCUTS ===
+    const kbdHint = document.getElementById('kbdHint');
+    let kbdTimer;
+    function showKbdHint() {
+        if (kbdHint) { kbdHint.classList.add('visible'); clearTimeout(kbdTimer); kbdTimer = setTimeout(() => kbdHint.classList.remove('visible'), 4000); }
+    }
+    setTimeout(showKbdHint, 3000);
+
+    document.addEventListener('keydown', function(e) {
+        if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+        if (e.key === 'd' || e.key === 'D') { openDownloadModal(); showKbdHint(); }
+        if (e.key === 'f' || e.key === 'F') { document.getElementById('features')?.scrollIntoView({ behavior: 'smooth' }); showKbdHint(); }
+        if (e.key === 'Escape') { closeDownloadModal(); }
+    });
+
+    // === SECTION REVEAL ON SCROLL (enhanced) ===
+    const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+            }
+        });
+    }, { threshold: 0.05, rootMargin: '0px 0px -50px 0px' });
+    document.querySelectorAll('.glow-separator').forEach(el => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(20px)';
+        el.style.transition = 'opacity 0.6s, transform 0.6s';
+        revealObserver.observe(el);
+    });
+
+    // === HERO TYPING EFFECT ===
+    (function() {
+        const heroTitle = document.getElementById('heroTitle');
+        if (!heroTitle) return;
+        const originalText = heroTitle.textContent;
+        let typed = '';
+        let i = 0;
+        heroTitle.innerHTML = '<span class=\"typing-cursor\"></span>';
+        function typeChar() {
+            if (i < originalText.length) {
+                typed += originalText[i];
+                heroTitle.innerHTML = typed + '<span class=\"typing-cursor\"></span>';
+                i++;
+                setTimeout(typeChar, 60 + Math.random() * 40);
+            } else {
+                setTimeout(() => {
+                    heroTitle.innerHTML = typed;
+                }, 1500);
+            }
+        }
+        setTimeout(typeChar, 1800);
+    })();
 </script>
 </body>
 </html>
