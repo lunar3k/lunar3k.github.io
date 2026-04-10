@@ -50,17 +50,6 @@
             100% { opacity: 1; transform: translateY(0); }
         }
 
-        @keyframes glowPulse {
-            0% { text-shadow: 0 0 0px rgba(100, 150, 255, 0.3); }
-            100% { text-shadow: 0 0 12px rgba(100, 150, 255, 0.8); }
-        }
-
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-8px); }
-            100% { transform: translateY(0px); }
-        }
-
         @keyframes borderGlow {
             0% { border-color: rgba(100, 140, 255, 0.3); box-shadow: 0 0 0px rgba(100, 140, 255, 0); }
             50% { border-color: rgba(100, 140, 255, 0.8); box-shadow: 0 0 20px rgba(100, 140, 255, 0.3); }
@@ -249,7 +238,6 @@
             transform: translateY(-2px);
         }
 
-        /* Features Section */
         .features-section {
             padding: 3rem 0;
         }
@@ -291,33 +279,6 @@
             color: #cbd5ff;
         }
 
-        /* Modules Section - nowe moduły */
-        .modules-section {
-            padding: 3rem 0;
-        }
-        .modules-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1.2rem;
-            margin-top: 2rem;
-        }
-        .module-item {
-            background: rgba(10, 14, 26, 0.7);
-            backdrop-filter: blur(5px);
-            padding: 0.8rem 1.2rem;
-            border-radius: 1rem;
-            text-align: center;
-            border: 1px solid rgba(100, 140, 255, 0.3);
-            transition: all 0.2s;
-            font-weight: 500;
-        }
-        .module-item:hover {
-            border-color: #6c8eff;
-            background: rgba(59, 110, 255, 0.2);
-            transform: translateX(5px);
-        }
-
-        /* Video preview */
         .video-section {
             padding: 3rem 0 5rem;
         }
@@ -354,71 +315,6 @@
             color: white;
         }
 
-        /* Modal */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.75);
-            backdrop-filter: blur(8px);
-            z-index: 1000;
-            justify-content: center;
-            align-items: center;
-        }
-        .modal-content {
-            background: rgba(10, 14, 26, 0.98);
-            border-radius: 2rem;
-            width: 90%;
-            max-width: 440px;
-            padding: 2rem;
-            border: 1px solid #4f6eff;
-        }
-        .modal-header {
-            display: flex;
-            justify-content: space-between;
-            font-size: 1.6rem;
-            font-weight: 700;
-            margin-bottom: 1.5rem;
-        }
-        .close-modal {
-            cursor: pointer;
-            font-size: 1.8rem;
-        }
-        .input-group input {
-            width: 100%;
-            padding: 0.9rem 1rem;
-            background: #111624;
-            border: 1px solid #2f3b60;
-            border-radius: 1.2rem;
-            color: white;
-            margin-bottom: 1rem;
-            outline: none;
-        }
-        .input-group input:focus {
-            border-color: #6c8eff;
-        }
-        .login-btn {
-            background: #3b6eff;
-            width: 100%;
-            padding: 0.8rem;
-            border-radius: 2rem;
-            font-weight: bold;
-            border: none;
-            color: white;
-            cursor: pointer;
-        }
-        .register-link {
-            text-align: center;
-            margin-top: 1rem;
-        }
-        .register-link span {
-            color: #8aabff;
-            cursor: pointer;
-        }
-
         footer {
             padding: 2rem;
             text-align: center;
@@ -430,6 +326,25 @@
             .nav-bar { flex-direction: column; gap: 1rem; }
             .hero h2 { font-size: 2.2rem; }
             .container { padding: 0 1rem; }
+        }
+
+        #toast {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background: #1e293b;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            z-index: 2000;
+            transition: transform 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            border-left: 4px solid #3b6eff;
+        }
+        #toast.show {
+            transform: translateX(-50%) translateY(0);
         }
     </style>
 </head>
@@ -444,10 +359,10 @@
             <h1>VESPER CLIENT <span class="version-badge">1.21.1</span></h1>
         </div>
         <div class="nav-links">
-            <a id="navFeaturesLink">Преимущества</a>
-            <a id="navVideoLink">Видеообзор</a>
+            <a id="navFeaturesLink">Features</a>
+            <a id="navVideoLink">Video</a>
             <div class="lang-selector" id="langSelector">
-                <i class="fas fa-globe"></i> <span id="currentLangLabel">Русский</span> ▼
+                <i class="fas fa-globe"></i> <span id="currentLangLabel">English</span> ▼
                 <div class="lang-dropdown" id="langDropdown">
                     <div data-lang="ru">🇷🇺 Русский</div>
                     <div data-lang="pl">🇵🇱 Polski</div>
@@ -462,28 +377,26 @@
 
 <main>
     <div class="container hero">
-        <h2 class="animate-on-scroll floating" id="heroTitle">Максимум Возможностей</h2>
-        <p class="animate-on-scroll delay-100" id="heroDesc">Мы предоставляем лучшего клиента для комфортной игры, который подарит вам лучшее впечатление от игрового процесса. Обширный функционал и непревзойденная производительность.</p>
+        <h2 class="animate-on-scroll floating" id="heroTitle">Maximum Possibilities</h2>
+        <p class="animate-on-scroll delay-100" id="heroDesc">The best free client for a comfortable gaming experience, delivering the best gameplay experience. Extensive functionality and unrivaled performance.</p>
         <div class="hero-buttons animate-on-scroll delay-200">
-            <button class="btn-primary" id="heroDownloadBtn"><i class="fas fa-download"></i> Download</button>
-            <button class="btn-secondary" id="heroFeaturesBtn">Подробнее</button>
+            <button class="btn-primary" id="heroDownloadBtn"><i class="fas fa-download"></i> Download Now</button>
+            <button class="btn-secondary" id="heroFeaturesBtn">Learn More</button>
         </div>
     </div>
 
-    <!-- Features section -->
     <div class="container features-section" id="features">
-        <h2 class="section-title animate-on-scroll" id="featuresTitle">✨ Наши преимущества ✨</h2>
+        <h2 class="section-title animate-on-scroll" id="featuresTitle">✨ Our Advantages ✨</h2>
         <div class="features-grid" id="featuresGrid"></div>
     </div>
 
-    <!-- Video section -->
     <div class="container video-section" id="video">
-        <h2 class="section-title animate-on-scroll" id="videoTitle">🎬 Видеообзор 🎬</h2>
+        <h2 class="section-title animate-on-scroll" id="videoTitle">🎬 Video Review 🎬</h2>
         <div class="video-wrapper animate-on-scroll delay-100">
             <div class="video-placeholder" id="videoPlaceholder">
                 <i class="fas fa-play-circle"></i>
-                <p id="videoPlaceholderText">Нажмите, чтобы посмотреть геймплей с нашим клиентом</p>
-                <span id="videoHint" style="font-size: 0.8rem;">(Пример симуляции видео)</span>
+                <p id="videoPlaceholderText">Click to watch gameplay with our client</p>
+                <span id="videoHint" style="font-size: 0.8rem;">(Example video simulation)</span>
             </div>
         </div>
     </div>
@@ -493,80 +406,190 @@
     <p id="footerText">© 2026 VESPER CLIENT | Best free Minecraft Client | TG: Zmywarka01</p>
 </footer>
 
-
+<div id="toast">Download started!</div>
 
 <script>
-    // Multi-language dictionary
+    // ========================================
+    // LINK DO POBRANIA
+    // ========================================
+    const DOWNLOAD_URL = 'https://www.dropbox.com/scl/fi/nebxi9or4okuwxaz18rj2/vesperclient-2.0.4.jar?rlkey=5v5jb9plw9n7x9czt2wh9lfjl&raw=1';
+    
+    // ========================================
+    // TŁUMACZENIA - angielski jako domyślny
+    // ========================================
     const translations = {
-        ru: {
-            nav_features: "Преимущества", nav_video: "Видеообзор", support: "Discord", download_btn: "Скачать",
-            heroTitle: "Максимум Возможностей", heroDesc: "Лучший бесплатный клиент для комфортной игры, который подарит вам лучшее впечатление от игрового процесса. Обширный функционал и непревзойденная производительность.",
-            download_now: "Скачать сейчас", more_btn: "Подробнее", featuresTitle: "✨ Наши преимущества ✨", videoTitle: "🎬 Видеообзор 🎬",
-            feature1_title: "Красивый внешний вид", feature1_desc: "Наш клиент предлагает множество визуальных функций, которые сделают вашу игру ярче. Настройте интерфейс под свои нужды.",
-            feature2_title: "Настраиваемость", feature2_desc: "В нашем клиенте вы можете настроить практически каждую функцию под свои нужды, а также использовать конфигурации других пользователей.",
-            feature3_title: "Оптимизация", feature3_desc: "Мы постоянно улучшаем оптимизацию клиента и самой игры. Запускайте клиент даже на слабых компьютерах.",
-            feature4_title: "Частые обновления", feature4_desc: "Регулярно обновляем функционал, добавляя новые возможности и улучшая существующие.",
-            feature5_title: "Лучшая поддержка", feature5_desc: "У нас лучшая поддержка, которая знает свое дело и поможет вам с любым вопросом.",
-            feature6_title: "Максимум Возможностей", feature6_desc: "Огромный выбор модулей, скриптов и улучшений для поднятия геймплея на новый уровень.",
-            videoText: "Нажмите, чтобы посмотреть геймплей с нашим клиентом", videoHint: "(Пример симуляции видео)",
+        en: {
+            // Nawigacja
+            nav_features: "Features",
+            nav_video: "Video",
+            support: "Support",
+            download_btn: "Download",
+            download_now: "Download Now",
+            more_btn: "Learn More",
+            
+            // Hero
+            heroTitle: "Maximum Possibilities",
+            heroDesc: "The best free client for a comfortable gaming experience, delivering the best gameplay experience. Extensive functionality and unrivaled performance.",
+            
+            // Features
+            featuresTitle: "✨ Our Advantages ✨",
+            feature1_title: "Beautiful Appearance",
+            feature1_desc: "Our client offers many visual features that will make your game more colorful. Customize the interface to your needs.",
+            feature2_title: "Customizability",
+            feature2_desc: "Adjust almost every feature to your needs, and use other users' configurations. Unlock the full potential.",
+            feature3_title: "Optimization",
+            feature3_desc: "We constantly improve client and game optimization. Run our client even on low-end computers.",
+            feature4_title: "Frequent Updates",
+            feature4_desc: "Regular updates, new features and improvements. Advantage on all existing servers.",
+            feature5_title: "Best Support",
+            feature5_desc: "We have the best support team that knows their stuff and will help you with any client-related issue.",
+            feature6_title: "Maximum Possibilities",
+            feature6_desc: "A huge selection of modules, scripts and enhancements to take your gameplay to the next level.",
+            
+            // Video
+            videoTitle: "🎬 Video Review 🎬",
+            videoText: "Click to watch gameplay with our client",
+            videoHint: "(Example video simulation)",
+            videoPlaying: "🎥 Vesper Client in action!",
+            videoBack: "Back",
+            
+            // Footer
             footerText: "© 2026 VESPER CLIENT | Best free Minecraft Client | TG: Zmywarka01",
-            videoPlaying: "🎥 Vesper Client в действии!", videoBack: "Назад"
+            
+            // Toast
+            toastDownload: "Download started!"
         },
         pl: {
-            nav_features: "Zalety", nav_video: "Wideorecenzja", support: "Discord", download_btn: "Pobierz",
-            heroTitle: "Maksimum Możliwości", heroDesc: "Najlepszy darmowy klient do komfortowej gry, który dostarczy Ci najlepszych wrażeń z rozgrywki. Rozbudowana funkcjonalność i niezrównana wydajność.",
-            download_now: "Pobierz teraz", more_btn: "Więcej", featuresTitle: "✨ Nasze zalety ✨", videoTitle: "🎬 Wideorecenzja 🎬",
-            feature1_title: "Piękny wygląd", feature1_desc: "Nasz klient oferuje wiele funkcji wizualnych, które sprawią, że Twoja gra będzie bardziej kolorowa.",
-            feature2_title: "Konfigurowalność", feature2_desc: "Możesz dostosować prawie każdą funkcję do swoich potrzeb, a także używać konfiguracji innych użytkowników.",
-            feature3_title: "Optymalizacja", feature3_desc: "Stale poprawiamy optymalizację naszego klienta i samej gry. Uruchom klienta nawet na słabych komputerach.",
-            feature4_title: "Częste aktualizacje", feature4_desc: "Regularnie aktualizujemy funkcjonalność, dodając nowe funkcje i udoskonalając już istniejące.",
-            feature5_title: "Najlepsze wsparcie", feature5_desc: "Mamy najlepsze wsparcie, które pomoże Ci w każdej kwestii związanej z naszym klientem.",
-            feature6_title: "Maksimum Możliwości", feature6_desc: "Ogromny wybór modułów, skryptów i ulepszeń, które wyniosą twój gameplay na wyższy poziom.",
-            videoText: "Kliknij, aby obejrzeć gameplay z naszym klientem", videoHint: "(Przykładowa symulacja wideo)",
+            nav_features: "Zalety",
+            nav_video: "Wideo",
+            support: "Support",
+            download_btn: "Pobierz",
+            download_now: "Pobierz teraz",
+            more_btn: "Więcej",
+            heroTitle: "Maksimum Możliwości",
+            heroDesc: "Najlepszy darmowy klient do komfortowej gry, który dostarczy Ci najlepszych wrażeń z rozgrywki. Rozbudowana funkcjonalność i niezrównana wydajność.",
+            featuresTitle: "✨ Nasze zalety ✨",
+            feature1_title: "Piękny wygląd",
+            feature1_desc: "Nasz klient oferuje wiele funkcji wizualnych, które sprawią, że Twoja gra będzie bardziej kolorowa.",
+            feature2_title: "Konfigurowalność",
+            feature2_desc: "Możesz dostosować prawie każdą funkcję do swoich potrzeb, a także używać konfiguracji innych użytkowników.",
+            feature3_title: "Optymalizacja",
+            feature3_desc: "Stale poprawiamy optymalizację naszego klienta i samej gry. Uruchom klienta nawet na słabych komputerach.",
+            feature4_title: "Częste aktualizacje",
+            feature4_desc: "Regularnie aktualizujemy funkcjonalność, dodając nowe funkcje i udoskonalając już istniejące.",
+            feature5_title: "Najlepsze wsparcie",
+            feature5_desc: "Mamy najlepsze wsparcie, które pomoże Ci w każdej kwestii związanej z naszym klientem.",
+            feature6_title: "Maksimum Możliwości",
+            feature6_desc: "Ogromny wybór modułów, skryptów i ulepszeń, które wyniosą twój gameplay na wyższy poziom.",
+            videoTitle: "🎬 Wideorecenzja 🎬",
+            videoText: "Kliknij, aby obejrzeć gameplay z naszym klientem",
+            videoHint: "(Przykładowa symulacja wideo)",
+            videoPlaying: "🎥 Vesper Client w akcji!",
+            videoBack: "Wróć",
             footerText: "© 2026 VESPER CLIENT | Best free Minecraft Client | TG: Zmywarka01",
-            videoPlaying: "🎥 Vesper Client w akcji!", videoBack: "Wróć"
+            toastDownload: "Pobieranie rozpoczęte!"
         },
-        en: {
-            nav_features: "Features", nav_video: "Video Review", support: "Discord", download_btn: "Download",
-            heroTitle: "Maximum Possibilities", heroDesc: "The best free client for a comfortable gaming experience, delivering the best gameplay experience. Extensive functionality and unrivaled performance.",
-            download_now: "Download Now", more_btn: "Learn More", featuresTitle: "✨ Our Advantages ✨", videoTitle: "🎬 Video Review 🎬",
-            feature1_title: "Beautiful Appearance", feature1_desc: "Our client offers many visual features that will make your game more colorful. Customize the interface to your needs.",
-            feature2_title: "Customizability", feature2_desc: "Adjust almost every feature to your needs, and use other users' configurations. Unlock the full potential.",
-            feature3_title: "Optimization", feature3_desc: "We constantly improve client and game optimization. Run our client even on low-end computers.",
-            feature4_title: "Frequent Updates", feature4_desc: "Regular updates, new features and improvements. Advantage on all existing servers.",
-            feature5_title: "Best Support", feature5_desc: "We have the best support team that knows their stuff and will help you with any client-related issue.",
-            feature6_title: "Maximum Possibilities", feature6_desc: "A huge selection of modules, scripts and enhancements to take your gameplay to the next level.",
-            videoText: "Click to watch gameplay with our client", videoHint: "(Example video simulation)",
+        ru: {
+            nav_features: "Преимущества",
+            nav_video: "Видео",
+            support: "Support",
+            download_btn: "Скачать",
+            download_now: "Скачать сейчас",
+            more_btn: "Подробнее",
+            heroTitle: "Максимум Возможностей",
+            heroDesc: "Лучший бесплатный клиент для комфортной игры, который подарит вам лучшее впечатление от игрового процесса. Обширный функционал и непревзойденная производительность.",
+            featuresTitle: "✨ Наши преимущества ✨",
+            feature1_title: "Красивый внешний вид",
+            feature1_desc: "Наш клиент предлагает множество визуальных функций, которые сделают вашу игру ярче. Настройте интерфейс под свои нужды.",
+            feature2_title: "Настраиваемость",
+            feature2_desc: "В нашем клиенте вы можете настроить практически каждую функцию под свои нужды, а также использовать конфигурации других пользователей.",
+            feature3_title: "Оптимизация",
+            feature3_desc: "Мы постоянно улучшаем оптимизацию клиента и самой игры. Запускайте клиент даже на слабых компьютерах.",
+            feature4_title: "Частые обновления",
+            feature4_desc: "Регулярно обновляем функционал, добавляя новые возможности и улучшая существующие.",
+            feature5_title: "Лучшая поддержка",
+            feature5_desc: "У нас лучшая поддержка, которая знает свое дело и поможет вам с любым вопросом.",
+            feature6_title: "Максимум Возможностей",
+            feature6_desc: "Огромный выбор модулей, скриптов и улучшений для поднятия геймплея на новый уровень.",
+            videoTitle: "🎬 Видеообзор 🎬",
+            videoText: "Нажмите, чтобы посмотреть геймплей с нашим клиентом",
+            videoHint: "(Пример симуляции видео)",
+            videoPlaying: "🎥 Vesper Client в действии!",
+            videoBack: "Назад",
             footerText: "© 2026 VESPER CLIENT | Best free Minecraft Client | TG: Zmywarka01",
-            videoPlaying: "🎥 Vesper Client in action!", videoBack: "Back"
+            toastDownload: "Скачивание начато!"
         }
     };
 
     let currentLang = localStorage.getItem('vesper_lang') || 'en';
 
+    function showToast(message) {
+        const toast = document.getElementById('toast');
+        toast.textContent = message;
+        toast.classList.add('show');
+        setTimeout(() => {
+            toast.classList.remove('show');
+        }, 3000);
+    }
+
+    function startDownload() {
+        try {
+            const link = document.createElement('a');
+            link.href = DOWNLOAD_URL;
+            link.download = 'vesperclient-2.0.4.jar';
+            link.style.display = 'none';
+            document.body.appendChild(link);
+            link.click();
+            
+            // Pobranie tłumaczenia dla toasta
+            const t = translations[currentLang];
+            showToast(t.toastDownload);
+            
+            setTimeout(() => {
+                document.body.removeChild(link);
+            }, 1000);
+            
+        } catch(e) {
+            window.open(DOWNLOAD_URL, '_blank');
+            const t = translations[currentLang];
+            showToast(t.toastDownload);
+        }
+    }
+
+    // Przypisanie przycisków pobierania
+    document.getElementById('heroDownloadBtn')?.addEventListener('click', startDownload);
+    document.getElementById('downloadNavBtn')?.addEventListener('click', startDownload);
+
     function applyLanguage(lang) {
         const t = translations[lang];
         if (!t) return;
 
+        // Nawigacja
         document.getElementById('navFeaturesLink').innerText = t.nav_features;
         document.getElementById('navVideoLink').innerText = t.nav_video;
         document.getElementById('supportNavBtn').innerText = t.support;
-        document.getElementById('downloadNavBtn').innerText = t.download_btn;
+        document.getElementById('downloadNavBtn').innerHTML = t.download_btn;
+        
+        // Hero
         document.getElementById('heroTitle').innerHTML = t.heroTitle;
         document.getElementById('heroDesc').innerText = t.heroDesc;
         document.getElementById('heroDownloadBtn').innerHTML = `<i class="fas fa-download"></i> ${t.download_now}`;
         document.getElementById('heroFeaturesBtn').innerText = t.more_btn;
+        
+        // Features
         document.getElementById('featuresTitle').innerHTML = t.featuresTitle;
         document.getElementById('videoTitle').innerHTML = t.videoTitle;
-        if(document.getElementById('videoPlaceholderText')) document.getElementById('videoPlaceholderText').innerText = t.videoText;
-        if(document.getElementById('videoHint')) document.getElementById('videoHint').innerText = t.videoHint;
+        
+        // Video placeholder
+        if(document.getElementById('videoPlaceholderText')) 
+            document.getElementById('videoPlaceholderText').innerText = t.videoText;
+        if(document.getElementById('videoHint')) 
+            document.getElementById('videoHint').innerText = t.videoHint;
+        
+        // Footer
         document.getElementById('footerText').innerText = t.footerText;
 
-        document.querySelectorAll('[data-translate]').forEach(el => {
-            const key = el.getAttribute('data-translate');
-            if (t[key]) el.innerText = t[key];
-        });
-
+        // Karty z zaletami
         const featuresData = [
             {title: t.feature1_title, desc: t.feature1_desc, icon: "fa-palette"},
             {title: t.feature2_title, desc: t.feature2_desc, icon: "fa-sliders-h"},
@@ -591,13 +614,15 @@
         localStorage.setItem('vesper_lang', lang);
     }
 
-    // Language dropdown
+    // Dropdown językowy
     const langSelector = document.getElementById('langSelector');
     const langDropdown = document.getElementById('langDropdown');
+    
     langSelector.addEventListener('click', (e) => {
         e.stopPropagation();
         langDropdown.style.display = langDropdown.style.display === 'block' ? 'none' : 'block';
     });
+    
     document.querySelectorAll('[data-lang]').forEach(btn => {
         btn.addEventListener('click', (e) => {
             currentLang = btn.getAttribute('data-lang');
@@ -605,52 +630,47 @@
             langDropdown.style.display = 'none';
         });
     });
-    document.addEventListener('click', () => { langDropdown.style.display = 'none'; });
+    
+    document.addEventListener('click', () => { 
+        langDropdown.style.display = 'none'; 
+    });
 
-    // Download function (replace '#' with actual download link later)
-    const downloadUrl = '#';
-    function startDownload() {
-        const a = document.createElement('a');
-        a.href = downloadUrl;
-        a.download = '';
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);
-    }
+    // Przewijanie do sekcji
+    document.getElementById('heroFeaturesBtn')?.addEventListener('click', () => 
+        document.getElementById('features')?.scrollIntoView({ behavior: 'smooth' }));
+    document.getElementById('navFeaturesLink')?.addEventListener('click', () => 
+        document.getElementById('features')?.scrollIntoView({ behavior: 'smooth' }));
+    document.getElementById('navVideoLink')?.addEventListener('click', () => 
+        document.getElementById('video')?.scrollIntoView({ behavior: 'smooth' }));
 
-    document.getElementById('heroDownloadBtn')?.addEventListener('click', startDownload);
-    document.getElementById('downloadNavBtn')?.addEventListener('click', startDownload);
-    document.getElementById('heroFeaturesBtn')?.addEventListener('click', () => document.getElementById('features')?.scrollIntoView({ behavior: 'smooth' }));
-    document.getElementById('navFeaturesLink')?.addEventListener('click', () => document.getElementById('features')?.scrollIntoView({ behavior: 'smooth' }));
-    document.getElementById('navVideoLink')?.addEventListener('click', () => document.getElementById('video')?.scrollIntoView({ behavior: 'smooth' }));
-
+    // Video placeholder
     const videoDiv = document.getElementById('videoPlaceholder');
     if(videoDiv){
         videoDiv.addEventListener('click', () => {
-            const vt = translations[currentLang];
-            videoDiv.innerHTML = `<div style="display:flex; flex-direction:column; align-items:center; gap:1rem;"><i class="fas fa-film" style="font-size: 3rem;"></i><p>${vt.videoPlaying} (Gameplay showcase)</p><button class="btn-primary" id="resetVideo" style="padding:0.5rem 1rem;">${vt.videoBack}</button></div>`;
-            document.getElementById('resetVideo')?.addEventListener('click', (e) => { e.stopPropagation(); location.reload(); });
+            const t = translations[currentLang];
+            videoDiv.innerHTML = `<div style="display:flex; flex-direction:column; align-items:center; gap:1rem;">
+                <i class="fas fa-film" style="font-size: 3rem;"></i>
+                <p>${t.videoPlaying} (Gameplay showcase)</p>
+                <button class="btn-primary" id="resetVideo" style="padding:0.5rem 1rem;">${t.videoBack}</button>
+            </div>`;
+            document.getElementById('resetVideo')?.addEventListener('click', (e) => { 
+                e.stopPropagation(); 
+                location.reload(); 
+            });
         });
     }
 
-    const observer = new IntersectionObserver((entries) => { entries.forEach(e => { if(e.isIntersecting) e.target.style.opacity = '1'; }); }, { threshold: 0.1 });
+    // Animacje przy scrollowaniu
+    const observer = new IntersectionObserver((entries) => { 
+        entries.forEach(e => { 
+            if(e.isIntersecting) e.target.style.opacity = '1'; 
+        }); 
+    }, { threshold: 0.1 });
+    
     document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
 
-    // If user already chose a language, use it. Otherwise detect by IP.
-    if(localStorage.getItem('vesper_lang')) {
-        applyLanguage(currentLang);
-    } else {
-        fetch('https://ip-api.com/json/?fields=countryCode')
-            .then(r => r.json())
-            .then(data => {
-                const cc = data.countryCode;
-                if(cc === 'PL') currentLang = 'pl';
-                else if(cc === 'RU' || cc === 'BY' || cc === 'UA' || cc === 'KZ') currentLang = 'ru';
-                else currentLang = 'en';
-                applyLanguage(currentLang);
-            })
-            .catch(() => applyLanguage(currentLang));
-    }
+    // START - ustawiamy domyślny język na ANGIELSKI
+    applyLanguage('en');
 </script>
 </body>
 </html>
