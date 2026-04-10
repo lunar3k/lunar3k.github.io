@@ -6,6 +6,7 @@
     <title>Vesper Client</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
     <style>
         * {
             margin: 0;
@@ -19,6 +20,55 @@
             color: #eef2ff;
             line-height: 1.5;
             overflow-x: hidden;
+        }
+
+        /* Loading Screen */
+        .loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #0a0c15;
+            z-index: 99999;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.6s, visibility 0.6s;
+        }
+        .loading-screen.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+        .loading-logo {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #FFFFFF, #8aabff, #6c4eff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 2rem;
+            animation: float 2s ease-in-out infinite;
+        }
+        .loading-bar {
+            width: 200px;
+            height: 4px;
+            background: rgba(100, 140, 255, 0.15);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        .loading-bar-fill {
+            width: 0%;
+            height: 100%;
+            background: linear-gradient(90deg, #3b6eff, #7c4eff, #a55eff);
+            border-radius: 10px;
+            animation: loadBar 1.5s ease forwards;
+        }
+        @keyframes loadBar {
+            0% { width: 0%; }
+            50% { width: 70%; }
+            100% { width: 100%; }
         }
 
         .hero-bg {
@@ -54,6 +104,48 @@
             0% { border-color: rgba(100, 140, 255, 0.3); box-shadow: 0 0 0px rgba(100, 140, 255, 0); }
             50% { border-color: rgba(100, 140, 255, 0.8); box-shadow: 0 0 20px rgba(100, 140, 255, 0.3); }
             100% { border-color: rgba(100, 140, 255, 0.3); box-shadow: 0 0 0px rgba(100, 140, 255, 0); }
+        }
+
+        @keyframes discordGradientMove {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-12px); }
+        }
+
+        @keyframes pulseGlow {
+            0%, 100% { box-shadow: 0 8px 20px rgba(59, 110, 255, 0.3); }
+            50% { box-shadow: 0 8px 35px rgba(59, 110, 255, 0.6), 0 0 40px rgba(124, 78, 255, 0.3); }
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.2; }
+            50% { opacity: 1; }
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0a0c15;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, #3b6eff, #7c4eff);
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(180deg, #5580ff, #9a6eff);
         }
 
         .animate-on-scroll {
@@ -126,6 +218,20 @@
             position: relative;
             cursor: pointer;
         }
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #3b6eff, #7c4eff);
+            border-radius: 2px;
+            transition: width 0.3s ease;
+        }
+        .nav-links a:hover::after {
+            width: 100%;
+        }
         .nav-links a:hover {
             color: white;
             text-shadow: 0 0 5px #5f8eff;
@@ -181,23 +287,41 @@
         }
 
         .hero {
-            padding: 5rem 0 2rem;
+            padding: 6rem 0 3rem;
             text-align: center;
+            position: relative;
         }
         .hero h2 {
-            font-size: 3.2rem;
+            font-size: 3.5rem;
             font-weight: 800;
-            background: linear-gradient(to right, #ffffff, #a5c9ff, #c4a5ff);
+            background: linear-gradient(270deg, #ffffff, #a5c9ff, #c4a5ff, #6c8eff, #ffffff);
+            background-size: 300% 300%;
+            animation: gradientShift 6s ease infinite;
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
             margin-bottom: 1rem;
+            text-shadow: none;
+        }
+        .hero .subtitle-badge {
+            display: inline-block;
+            background: rgba(59, 110, 255, 0.15);
+            border: 1px solid rgba(100, 140, 255, 0.3);
+            padding: 0.4rem 1.2rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            color: #8aabff;
+            margin-bottom: 1.5rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            font-weight: 600;
         }
         .hero p {
             font-size: 1.2rem;
             max-width: 650px;
             margin: 1rem auto;
-            opacity: 0.9;
+            opacity: 0.85;
+            color: #c0cfff;
         }
         .hero-buttons {
             display: flex;
@@ -216,11 +340,13 @@
             cursor: pointer;
             transition: all 0.3s;
             box-shadow: 0 8px 20px rgba(59, 110, 255, 0.3);
+            animation: pulseGlow 3s ease-in-out infinite;
         }
         .btn-primary:hover {
             transform: translateY(-4px);
-            filter: brightness(1.05);
-            box-shadow: 0 15px 30px rgba(59, 110, 255, 0.5);
+            filter: brightness(1.1);
+            box-shadow: 0 15px 35px rgba(59, 110, 255, 0.6);
+            animation: none;
         }
         .btn-secondary {
             background: rgba(20, 30, 55, 0.8);
@@ -246,6 +372,7 @@
             font-size: 2.2rem;
             margin-bottom: 2.5rem;
             font-weight: 700;
+            position: relative;
         }
         .features-grid {
             display: grid;
@@ -256,20 +383,39 @@
             background: rgba(15, 20, 35, 0.65);
             backdrop-filter: blur(10px);
             border-radius: 2rem;
-            padding: 1.8rem;
-            border: 1px solid rgba(100, 140, 255, 0.3);
-            transition: all 0.3s ease;
+            padding: 2rem;
+            border: 1px solid rgba(100, 140, 255, 0.2);
+            transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(100, 140, 255, 0.05), transparent);
+            transition: left 0.6s;
+        }
+        .feature-card:hover::before {
+            left: 100%;
         }
         .feature-card:hover {
-            transform: translateY(-8px);
+            transform: translateY(-10px) scale(1.02);
             border-color: #6c8eff;
-            box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.5);
-            background: rgba(25, 32, 55, 0.8);
+            box-shadow: 0 25px 50px -15px rgba(59, 110, 255, 0.25), 0 0 30px rgba(100, 140, 255, 0.1);
+            background: rgba(25, 32, 55, 0.85);
         }
         .feature-icon {
             font-size: 2.5rem;
             color: #7e9eff;
             margin-bottom: 1rem;
+            transition: transform 0.3s;
+        }
+        .feature-card:hover .feature-icon {
+            transform: scale(1.15);
         }
         .feature-card h3 {
             font-size: 1.5rem;
@@ -294,38 +440,616 @@
         }
         .video-placeholder {
             background: #0f121f;
-            height: 380px;
+            height: 480px;
             border-radius: 24px;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             gap: 1rem;
-            background-image: linear-gradient(45deg, #1f2740 2%, #101624);
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+        }
+        .video-placeholder img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 24px;
+            transition: transform 0.4s, filter 0.4s;
+        }
+        .video-placeholder:hover img {
+            transform: scale(1.03);
+            filter: brightness(0.6);
+        }
+        .video-play-btn {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80px;
+            height: 80px;
+            background: rgba(255, 0, 0, 0.85);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s, background 0.3s;
+            pointer-events: none;
+        }
+        .video-placeholder:hover .video-play-btn {
+            transform: translate(-50%, -50%) scale(1.15);
+            background: rgba(255, 0, 0, 1);
+        }
+        .video-play-btn i {
+            font-size: 2rem;
+            color: white;
+            margin-left: 4px;
+        }
+        .video-yt-label {
+            position: absolute;
+            bottom: 16px;
+            right: 20px;
+            background: rgba(0,0,0,0.7);
+            backdrop-filter: blur(6px);
+            padding: 6px 14px;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            color: #ccc;
+            pointer-events: none;
+        }
+
+        /* Download Modal */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.75);
+            backdrop-filter: blur(8px);
+            z-index: 5000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+        .modal-overlay.active {
+            display: flex;
+        }
+        .modal-box {
+            background: linear-gradient(145deg, #111827, #1a2240);
+            border: 1px solid rgba(100, 140, 255, 0.4);
+            border-radius: 24px;
+            padding: 2.5rem;
+            max-width: 480px;
+            width: 90%;
+            text-align: center;
+            animation: fadeUp 0.4s ease;
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6);
+        }
+        .modal-box h3 {
+            font-size: 1.6rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(to right, #ffffff, #a5c9ff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .modal-box p {
+            color: #b0bfff;
+            margin-bottom: 1.5rem;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+        .modal-box .pin-input {
+            width: 100%;
+            padding: 0.8rem 1.2rem;
+            border-radius: 50px;
+            border: 1px solid #3b5bbf;
+            background: #0d1020;
+            color: white;
+            font-size: 1rem;
+            text-align: center;
+            letter-spacing: 4px;
+            font-weight: 700;
+            outline: none;
+            margin-bottom: 1rem;
+            transition: border-color 0.3s;
+        }
+        .modal-box .pin-input:focus {
+            border-color: #6c8eff;
+            box-shadow: 0 0 15px rgba(100, 140, 255, 0.3);
+        }
+        .modal-box .pin-input::placeholder {
+            letter-spacing: 2px;
+            font-weight: 400;
+            opacity: 0.5;
+        }
+        .modal-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+        .btn-discord {
+            background: linear-gradient(270deg, #1a1a6e, #3b7aff, #00c6ff, #5865F2, #1a1a6e);
+            background-size: 400% 400%;
+            animation: discordGradientMove 4s ease infinite;
+            border: none;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            font-weight: bold;
+            color: white;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            width: 100%;
+        }
+        .btn-discord:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 198, 255, 0.4), 0 0 15px rgba(88, 101, 242, 0.3);
+        }
+        .btn-check-pin {
+            background: linear-gradient(95deg, #3b6eff, #7c4eff);
+            border: none;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            font-weight: bold;
+            color: white;
+            font-size: 1rem;
             cursor: pointer;
             transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
         }
-        .video-placeholder i {
-            font-size: 4rem;
-            color: #6c8eff;
+        .btn-check-pin:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(59, 110, 255, 0.4);
+        }
+        .modal-close {
+            background: transparent;
+            border: 1px solid #3b5bbf;
+            padding: 0.6rem 1.5rem;
+            border-radius: 50px;
+            color: #8aa0ff;
+            font-size: 0.9rem;
+            cursor: pointer;
             transition: 0.2s;
+            margin-top: 0.5rem;
         }
-        .video-placeholder:hover i {
-            transform: scale(1.1);
+        .modal-close:hover {
+            background: rgba(59, 110, 255, 0.15);
             color: white;
+        }
+        .pin-error {
+            color: #ff6b6b;
+            font-size: 0.85rem;
+            margin-top: -0.5rem;
+            margin-bottom: 0.5rem;
+            display: none;
+        }
+        .pin-error.show {
+            display: block;
+        }
+
+        /* Stats Section */
+        .stats-section {
+            padding: 3rem 0;
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            text-align: center;
+        }
+        .stat-item {
+            padding: 1.5rem;
+            border-radius: 1.5rem;
+            transition: all 0.3s;
+        }
+        .stat-item:hover {
+            background: rgba(59, 110, 255, 0.08);
+            transform: translateY(-5px);
+        }
+        .stat-number {
+            font-size: 2.8rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #6c8eff, #c4a5ff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 0.3rem;
+        }
+        .stat-label {
+            font-size: 0.95rem;
+            color: #8a9cc0;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            font-weight: 600;
+        }
+        .stat-item:hover .stat-number {
+            filter: brightness(1.2);
+        }
+
+        /* Section Divider */
+        .section-divider {
+            width: 120px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #6c8eff, transparent);
+            margin: 0 auto 2rem;
+            border-radius: 10px;
+        }
+
+        /* Reviews Section */
+        .reviews-section {
+            padding: 3rem 0 4rem;
+        }
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+        .review-card {
+            background: rgba(15, 18, 35, 0.7);
+            backdrop-filter: blur(10px);
+            border-radius: 1.2rem;
+            padding: 1.5rem;
+            border: 1px solid rgba(88, 101, 242, 0.2);
+            transition: all 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+            position: relative;
+        }
+        .review-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(88, 101, 242, 0.5);
+            box-shadow: 0 15px 40px -10px rgba(88, 101, 242, 0.2);
+        }
+        .review-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 0.8rem;
+        }
+        .review-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1rem;
+            color: white;
+            flex-shrink: 0;
+        }
+        .review-name {
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: #e2e8ff;
+        }
+        .review-badge {
+            font-size: 0.7rem;
+            padding: 0.15rem 0.5rem;
+            border-radius: 20px;
+            font-weight: 600;
+            margin-left: 0.4rem;
+            background: linear-gradient(95deg, #3b6eff, #7c4eff) !important;
+            color: white !important;
+        }
+        .review-text {
+            color: #b8c4e0;
+            font-size: 0.95rem;
+            line-height: 1.5;
+            font-style: italic;
+        }
+        .review-text::before {
+            content: '\201C';
+            font-size: 1.5rem;
+            color: #5865F2;
+            margin-right: 4px;
+            line-height: 0;
+            vertical-align: -6px;
+        }
+        .review-text::after {
+            content: '\201D';
+            font-size: 1.5rem;
+            color: #5865F2;
+            margin-left: 4px;
+            line-height: 0;
+            vertical-align: -6px;
+        }
+        .review-source {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            margin-top: 0.8rem;
+            font-size: 0.75rem;
+            color: #5865F2;
+        }
+        .review-stars {
+            color: #fbbf24;
+            font-size: 0.8rem;
+            margin-top: 0.5rem;
+            letter-spacing: 2px;
+        }
+
+        /* Scroll to top */
+        .scroll-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, #3b6eff, #7c4eff);
+            border: none;
+            border-radius: 50%;
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+            z-index: 1000;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.3s;
+            box-shadow: 0 5px 20px rgba(59, 110, 255, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .scroll-top.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .scroll-top:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(59, 110, 255, 0.6);
+        }
+
+        /* Particles Canvas */
+        #particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
         }
 
         footer {
-            padding: 2rem;
+            padding: 3rem 2rem;
             text-align: center;
-            border-top: 1px solid #1f2842;
+            border-top: 1px solid rgba(100, 140, 255, 0.15);
             margin-top: 2rem;
+            background: rgba(5, 7, 15, 0.5);
+        }
+        .footer-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+        .footer-links a {
+            color: #8a9cc0;
+            text-decoration: none;
+            transition: 0.2s;
+            font-size: 0.95rem;
+        }
+        .footer-links a:hover {
+            color: #6c8eff;
+        }
+        .footer-socials {
+            display: flex;
+            justify-content: center;
+            gap: 1.2rem;
+            margin-bottom: 1.5rem;
+        }
+        .footer-socials a {
+            width: 42px;
+            height: 42px;
+            border: 1px solid rgba(100, 140, 255, 0.25);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #8a9cc0;
+            text-decoration: none;
+            transition: all 0.3s;
+            font-size: 1.1rem;
+        }
+        .footer-socials a:hover {
+            border-color: #6c8eff;
+            color: white;
+            background: rgba(59, 110, 255, 0.15);
+            transform: translateY(-3px);
+        }
+        .footer-bottom {
+            color: #4a5680;
+            font-size: 0.85rem;
+        }
+
+        /* ===== 3D EFFECTS ===== */
+
+        /* 3D Perspective on Containers */
+        .features-grid { perspective: 1200px; }
+        .reviews-grid { perspective: 1200px; }
+        .stats-grid { perspective: 800px; }
+        .video-wrapper { perspective: 1200px; }
+        .footer-socials { perspective: 600px; }
+
+        /* 3D Enhanced Hovers */
+        .stat-item:hover {
+            background: rgba(59, 110, 255, 0.1);
+            transform: translateY(-8px) rotateX(8deg);
+            box-shadow: 0 15px 30px rgba(59, 110, 255, 0.15);
+        }
+        .footer-socials a:hover {
+            transform: translateY(-5px) rotateY(15deg) scale(1.1);
+            box-shadow: 0 10px 25px rgba(59, 110, 255, 0.3);
+        }
+
+        /* 3D Modal Entrance */
+        .modal-box {
+            animation: modal3DIn 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+            transform-style: preserve-3d;
+        }
+        @keyframes modal3DIn {
+            0% {
+                opacity: 0;
+                transform: perspective(800px) rotateX(-15deg) translateY(60px) scale(0.9);
+            }
+            100% {
+                opacity: 1;
+                transform: perspective(800px) rotateX(0deg) translateY(0) scale(1);
+            }
+        }
+
+
+
+        /* Aurora Orbs */
+        .aurora-orbs {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: 0;
+        }
+        .aurora-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.2;
+            animation: orbFloat 8s ease-in-out infinite;
+        }
+        .aurora-orb:nth-child(1) {
+            width: 350px;
+            height: 350px;
+            background: rgba(59, 110, 255, 0.4);
+            top: -80px;
+            left: 10%;
+            animation-duration: 10s;
+        }
+        .aurora-orb:nth-child(2) {
+            width: 280px;
+            height: 280px;
+            background: rgba(124, 78, 255, 0.35);
+            top: 40%;
+            right: 5%;
+            animation-delay: -3s;
+            animation-duration: 12s;
+        }
+        .aurora-orb:nth-child(3) {
+            width: 220px;
+            height: 220px;
+            background: rgba(0, 198, 255, 0.3);
+            bottom: -40px;
+            left: 40%;
+            animation-delay: -5s;
+            animation-duration: 9s;
+        }
+        @keyframes orbFloat {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            25% { transform: translate(30px, -40px) scale(1.1); }
+            50% { transform: translate(-20px, 20px) scale(0.95); }
+            75% { transform: translate(15px, 30px) scale(1.05); }
+        }
+
+        /* Hero Content Z-Index */
+        .hero > *:not(.aurora-orbs):not(.hero-glow-ring) {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Ripple Effect */
+        .ripple {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            transform: scale(0);
+            animation: rippleEffect 0.6s linear;
+            pointer-events: none;
+        }
+        @keyframes rippleEffect {
+            to { transform: scale(4); opacity: 0; }
+        }
+
+        /* 3D Hero Glow Ring */
+        .hero-glow-ring {
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            border: 2px solid rgba(100, 140, 255, 0.08);
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotateX(75deg);
+            animation: glowRingSpin 15s linear infinite;
+            pointer-events: none;
+            z-index: 0;
+        }
+        .hero-glow-ring::before {
+            content: '';
+            position: absolute;
+            inset: -40px;
+            border-radius: 50%;
+            border: 1px solid rgba(124, 78, 255, 0.06);
+            animation: glowRingCounter 10s linear infinite;
+        }
+        .hero-glow-ring::after {
+            content: '';
+            position: absolute;
+            inset: 40px;
+            border-radius: 50%;
+            border: 1px solid rgba(0, 198, 255, 0.06);
+            animation: glowRingCounter 20s linear infinite reverse;
+        }
+        @keyframes glowRingSpin {
+            from { transform: translate(-50%, -50%) rotateX(75deg) rotateZ(0deg); }
+            to { transform: translate(-50%, -50%) rotateX(75deg) rotateZ(360deg); }
+        }
+        @keyframes glowRingCounter {
+            from { transform: rotateZ(0deg); }
+            to { transform: rotateZ(360deg); }
+        }
+
+        /* Video Placeholder 3D */
+        .video-placeholder {
+            transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
         }
 
         @media (max-width: 780px) {
             .nav-bar { flex-direction: column; gap: 1rem; }
             .hero h2 { font-size: 2.2rem; }
             .container { padding: 0 1rem; }
+            .stats-grid { grid-template-columns: repeat(2, 1fr); }
+            .stat-number { font-size: 2rem; }
+            .reviews-grid { grid-template-columns: repeat(2, 1fr); }
+            .footer-links { gap: 1rem; }
+            .features-grid, .reviews-grid, .stats-grid, .video-wrapper, .footer-socials { perspective: none; }
+            .hero-glow-ring { width: 280px; height: 280px; }
+        }
+
+        /* Header shrink */
+        header.scrolled {
+            padding: 0.7rem 0;
+            background: rgba(5, 7, 15, 0.85);
+            border-bottom-color: rgba(80, 120, 255, 0.15);
+        }
+        header.scrolled .logo h1 {
+            font-size: 1.5rem;
         }
 
         #toast {
@@ -350,8 +1074,14 @@
 </head>
 <body>
 
+<div class="loading-screen" id="loadingScreen">
+    <div class="loading-logo">VESPER CLIENT</div>
+    <div class="loading-bar"><div class="loading-bar-fill"></div></div>
+</div>
+
 <div class="hero-bg"></div>
 <div class="dark-overlay"></div>
+<canvas id="particles"></canvas>
 
 <header>
     <div class="container nav-bar">
@@ -377,6 +1107,13 @@
 
 <main>
     <div class="container hero">
+        <div class="aurora-orbs">
+            <div class="aurora-orb"></div>
+            <div class="aurora-orb"></div>
+            <div class="aurora-orb"></div>
+        </div>
+        <div class="hero-glow-ring"></div>
+        <div class="subtitle-badge animate-on-scroll" id="heroBadge">🚀 FREE & UNDETECTED</div>
         <h2 class="animate-on-scroll floating" id="heroTitle">Maximum Possibilities</h2>
         <p class="animate-on-scroll delay-100" id="heroDesc">The best free client for a comfortable gaming experience, delivering the best gameplay experience. Extensive functionality and unrivaled performance.</p>
         <div class="hero-buttons animate-on-scroll delay-200">
@@ -387,26 +1124,143 @@
 
     <div class="container features-section" id="features">
         <h2 class="section-title animate-on-scroll" id="featuresTitle">✨ Our Advantages ✨</h2>
+        <div class="section-divider"></div>
         <div class="features-grid" id="featuresGrid"></div>
+    </div>
+
+    <div class="container stats-section">
+        <div class="stats-grid">
+            <div class="stat-item animate-on-scroll">
+                <div class="stat-number" id="stat1">80+</div>
+                <div class="stat-label" id="statLabel1">Users</div>
+            </div>
+            <div class="stat-item animate-on-scroll delay-100">
+                <div class="stat-number" id="stat2">200+</div>
+                <div class="stat-label" id="statLabel2">Modules</div>
+            </div>
+            <div class="stat-item animate-on-scroll delay-200">
+                <div class="stat-number" id="stat3">99.9%</div>
+                <div class="stat-label" id="statLabel3">Uptime</div>
+            </div>
+            <div class="stat-item animate-on-scroll delay-300">
+                <div class="stat-number" id="stat4">24/7</div>
+                <div class="stat-label" id="statLabel4">Support</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container reviews-section" id="reviews">
+        <h2 class="section-title animate-on-scroll" id="reviewsTitle">💬 Community Reviews 💬</h2>
+        <div class="section-divider"></div>
+        <div class="reviews-grid">
+            <div class="review-card animate-on-scroll">
+                <div class="review-header">
+                    <div class="review-avatar" style="background: linear-gradient(135deg, #ef4444, #f97316);">
+                        H
+                    </div>
+                    <div>
+                        <span class="review-name">Hlamos</span>
+                        <span class="review-badge">VSPR</span>
+                    </div>
+                </div>
+                <div class="review-text">Po pobraniu clienta moje życie nabrało sensu</div>
+                <div class="review-stars">★★★★★</div>
+                <div class="review-source"><i class="fab fa-discord"></i> Discord</div>
+            </div>
+            <div class="review-card animate-on-scroll delay-100">
+                <div class="review-header">
+                    <div class="review-avatar" style="background: linear-gradient(135deg, #10b981, #06b6d4);">
+                        O
+                    </div>
+                    <div>
+                        <span class="review-name">Over</span>
+                        <span class="review-badge">VSPR</span>
+                    </div>
+                </div>
+                <div class="review-text">najlepszy klient w wielkopolsce</div>
+                <div class="review-stars">★★★★★</div>
+                <div class="review-source"><i class="fab fa-discord"></i> Discord</div>
+            </div>
+            <div class="review-card animate-on-scroll delay-200">
+                <div class="review-header">
+                    <div class="review-avatar" style="background: linear-gradient(135deg, #f59e0b, #eab308);">
+                        M
+                    </div>
+                    <div>
+                        <span class="review-name">M0ne7WTF__</span>
+                        <span class="review-badge">VSPR</span>
+                    </div>
+                </div>
+                <div class="review-text">hmm wydaje mi ze Minecraft juz nie ma sensu gry te cheaty sa zamocne</div>
+                <div class="review-stars">★★★★★</div>
+                <div class="review-source"><i class="fab fa-discord"></i> Discord</div>
+            </div>
+            <div class="review-card animate-on-scroll delay-300">
+                <div class="review-header">
+                    <div class="review-avatar" style="background: linear-gradient(135deg, #a855f7, #ec4899);">
+                        Q
+                    </div>
+                    <div>
+                        <span class="review-name">quret</span>
+                        <span class="review-badge">VSPR</span>
+                    </div>
+                </div>
+                <div class="review-text">dojebany cheat moje barwy z szarych sa kolorowe</div>
+                <div class="review-stars">★★★★★</div>
+                <div class="review-source"><i class="fab fa-discord"></i> Discord</div>
+            </div>
+        </div>
     </div>
 
     <div class="container video-section" id="video">
         <h2 class="section-title animate-on-scroll" id="videoTitle">🎬 Video Review 🎬</h2>
+        <div class="section-divider"></div>
         <div class="video-wrapper animate-on-scroll delay-100">
-            <div class="video-placeholder" id="videoPlaceholder">
-                <i class="fas fa-play-circle"></i>
-                <p id="videoPlaceholderText">Click to watch gameplay with our client</p>
-                <span id="videoHint" style="font-size: 0.8rem;">(Example video simulation)</span>
+            <div class="video-placeholder" id="videoPlaceholder" onclick="playVideo()">
+                <img src="https://img.youtube.com/vi/-LW6w5aXL3A/maxresdefault.jpg" alt="Vesper Client Gameplay">
+                <div class="video-play-btn"><i class="fas fa-play"></i></div>
+                <div class="video-yt-label"><i class="fab fa-youtube"></i> YouTube</div>
             </div>
         </div>
     </div>
 </main>
 
 <footer>
-    <p id="footerText">© 2026 VESPER CLIENT | Best free Minecraft Client | TG: Zmywarka01</p>
+    <div class="footer-content">
+        <div class="footer-socials">
+            <a href="https://dc.gg/vesperclient" target="_blank" title="Discord"><i class="fab fa-discord"></i></a>
+            <a href="https://t.me/Zmywarka01" target="_blank" title="Telegram"><i class="fab fa-telegram"></i></a>
+            <a href="https://www.youtube.com/watch?v=-LW6w5aXL3A" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
+        </div>
+        <div class="footer-links">
+            <a href="#features" id="footerFeaturesLink">Features</a>
+            <a href="#video" id="footerVideoLink">Video</a>
+            <a href="https://dc.gg/vesperclient" target="_blank" id="footerSupportLink">Support</a>
+        </div>
+        <p class="footer-bottom" id="footerText">© 2026 VESPER CLIENT | Best free Minecraft Client | TG: Zmywarka01</p>
+    </div>
 </footer>
 
+<button class="scroll-top" id="scrollTopBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+    <i class="fas fa-chevron-up"></i>
+</button>
+
 <div id="toast">Download started!</div>
+
+<!-- Download Modal -->
+<div class="modal-overlay" id="downloadModal">
+    <div class="modal-box">
+        <h3 id="modalTitle"><i class="fab fa-discord"></i> Download Client</h3>
+        <p id="modalDesc">Aby pobrać klienta, wejdź na naszego Discorda — tam znajdziesz darmowy PIN do pobrania!</p>
+        <input type="text" class="pin-input" id="pinInput" placeholder="Wpisz PIN" maxlength="20">
+        <p class="pin-error" id="pinError">Nieprawidłowy PIN. Wejdź na Discorda po darmowy PIN!</p>
+        <div class="modal-buttons">
+            <button class="btn-check-pin" id="checkPinBtn"><i class="fas fa-key"></i> <span id="checkPinText">Sprawdź PIN</span></button>
+            <a href="https://dc.gg/vesperclient" target="_blank" style="text-decoration:none;"><button class="btn-discord"><i class="fab fa-discord"></i> <span id="joinDiscordText">Dołącz na Discord</span></button></a>
+            <button class="modal-close" id="modalCloseBtn">Zamknij</button>
+        </div>
+    </div>
+</div>
 
 <script>
     // ========================================
@@ -445,6 +1299,10 @@
             feature5_desc: "We have the best support team that knows their stuff and will help you with any client-related issue.",
             feature6_title: "Maximum Possibilities",
             feature6_desc: "A huge selection of modules, scripts and enhancements to take your gameplay to the next level.",
+            feature7_title: "Undetected",
+            feature7_desc: "Advanced bypass system that keeps you safe on all major servers. Stay undetected and play without worries.",
+            feature8_title: "Active Community",
+            feature8_desc: "Join thousands of players on our Discord. Share configs, get tips and be part of the fastest growing community.",
             
             // Video
             videoTitle: "🎬 Video Review 🎬",
@@ -457,7 +1315,31 @@
             footerText: "© 2026 VESPER CLIENT | Best free Minecraft Client | TG: Zmywarka01",
             
             // Toast
-            toastDownload: "Download started!"
+            toastDownload: "Download started!",
+            
+            // Modal
+            modalTitle: "<i class='fab fa-discord'></i> Download Client",
+            modalDesc: "To download the client, join our Discord — there you'll find a free PIN to download!",
+            checkPin: "Check PIN",
+            joinDiscord: "Join Discord",
+            modalClose: "Close",
+            pinPlaceholder: "Enter PIN",
+            pinError: "Invalid PIN. Join Discord to get a free PIN!",
+            
+            // Stats
+            heroBadge: "🚀 FREE & UNDETECTED",
+            statLabel1: "Users",
+            statLabel2: "Modules",
+            statLabel3: "Uptime",
+            statLabel4: "Support",
+            
+            // Footer
+            footerFeatures: "Features",
+            footerVideo: "Video",
+            footerSupport: "Support",
+            
+            // Reviews
+            reviewsTitle: "💬 Community Reviews 💬"
         },
         pl: {
             nav_features: "Zalety",
@@ -481,13 +1363,33 @@
             feature5_desc: "Mamy najlepsze wsparcie, które pomoże Ci w każdej kwestii związanej z naszym klientem.",
             feature6_title: "Maksimum Możliwości",
             feature6_desc: "Ogromny wybór modułów, skryptów i ulepszeń, które wyniosą twój gameplay na wyższy poziom.",
+            feature7_title: "Niewykrywalny",
+            feature7_desc: "Zaawansowany system bypass, który chroni Cię na wszystkich głównych serwerach. Graj bez obaw.",
+            feature8_title: "Aktywna Społeczność",
+            feature8_desc: "Dołącz do tysięcy graczy na naszym Discordzie. Dziel się configami, zdobywaj porady i bądź częścią społeczności.",
             videoTitle: "🎬 Wideorecenzja 🎬",
             videoText: "Kliknij, aby obejrzeć gameplay z naszym klientem",
             videoHint: "(Przykładowa symulacja wideo)",
             videoPlaying: "🎥 Vesper Client w akcji!",
             videoBack: "Wróć",
             footerText: "© 2026 VESPER CLIENT | Best free Minecraft Client | TG: Zmywarka01",
-            toastDownload: "Pobieranie rozpoczęte!"
+            toastDownload: "Pobieranie rozpoczęte!",
+            modalTitle: "<i class='fab fa-discord'></i> Pobierz Klienta",
+            modalDesc: "Aby pobrać klienta, wejdź na naszego Discorda — tam znajdziesz darmowy PIN do pobrania!",
+            checkPin: "Sprawdź PIN",
+            joinDiscord: "Dołącz na Discord",
+            modalClose: "Zamknij",
+            pinPlaceholder: "Wpisz PIN",
+            pinError: "Nieprawidłowy PIN. Wejdź na Discorda po darmowy PIN!",
+            heroBadge: "🚀 DARMOWY & NIEWYKRYWALNY",
+            statLabel1: "Użytkowników",
+            statLabel2: "Modułów",
+            statLabel3: "Uptime",
+            statLabel4: "Wsparcie",
+            footerFeatures: "Zalety",
+            footerVideo: "Wideo",
+            footerSupport: "Wsparcie",
+            reviewsTitle: "💬 Opinie Społeczności 💬"
         },
         ru: {
             nav_features: "Преимущества",
@@ -511,13 +1413,33 @@
             feature5_desc: "У нас лучшая поддержка, которая знает свое дело и поможет вам с любым вопросом.",
             feature6_title: "Максимум Возможностей",
             feature6_desc: "Огромный выбор модулей, скриптов и улучшений для поднятия геймплея на новый уровень.",
+            feature7_title: "Необнаруживаемый",
+            feature7_desc: "Продвинутая система обхода, которая защищает вас на всех основных серверах. Играйте без опасений.",
+            feature8_title: "Активное сообщество",
+            feature8_desc: "Присоединяйтесь к тысячам игроков в нашем Discord. Делитесь конфигами и будьте частью сообщества.",
             videoTitle: "🎬 Видеообзор 🎬",
             videoText: "Нажмите, чтобы посмотреть геймплей с нашим клиентом",
             videoHint: "(Пример симуляции видео)",
             videoPlaying: "🎥 Vesper Client в действии!",
             videoBack: "Назад",
             footerText: "© 2026 VESPER CLIENT | Best free Minecraft Client | TG: Zmywarka01",
-            toastDownload: "Скачивание начато!"
+            toastDownload: "Скачивание начато!",
+            modalTitle: "<i class='fab fa-discord'></i> Скачать Клиент",
+            modalDesc: "Чтобы скачать клиент, зайдите на наш Discord — там вы найдёте бесплатный PIN для загрузки!",
+            checkPin: "Проверить PIN",
+            joinDiscord: "Присоединиться к Discord",
+            modalClose: "Закрыть",
+            pinPlaceholder: "Введите PIN",
+            pinError: "Неверный PIN. Зайдите на Discord за бесплатным PIN!",
+            heroBadge: "🚀 БЕСПЛАТНЫЙ & НЕОБНАРУЖИВАЕМЫЙ",
+            statLabel1: "Пользователей",
+            statLabel2: "Модулей",
+            statLabel3: "Uptime",
+            statLabel4: "Поддержка",
+            footerFeatures: "Преимущества",
+            footerVideo: "Видео",
+            footerSupport: "Поддержка",
+            reviewsTitle: "💬 Отзывы Сообщества 💬"
         }
     };
 
@@ -532,33 +1454,49 @@
         }, 3000);
     }
 
-    function startDownload() {
-        try {
+    function playVideo() {
+        window.open('https://www.youtube.com/watch?v=-LW6w5aXL3A', '_blank');
+    }
+
+    function openDownloadModal() {
+        document.getElementById('downloadModal').classList.add('active');
+        document.getElementById('pinInput').value = '';
+        document.getElementById('pinError').classList.remove('show');
+    }
+
+    function closeDownloadModal() {
+        document.getElementById('downloadModal').classList.remove('active');
+    }
+
+    function checkPin() {
+        const pin = document.getElementById('pinInput').value.trim();
+        if (pin === '2137') {
+            closeDownloadModal();
             const link = document.createElement('a');
             link.href = DOWNLOAD_URL;
             link.download = 'vesperclient-2.0.4.jar';
             link.style.display = 'none';
             document.body.appendChild(link);
             link.click();
-            
-            // Pobranie tłumaczenia dla toasta
+            setTimeout(() => document.body.removeChild(link), 1000);
             const t = translations[currentLang];
             showToast(t.toastDownload);
-            
-            setTimeout(() => {
-                document.body.removeChild(link);
-            }, 1000);
-            
-        } catch(e) {
-            window.open(DOWNLOAD_URL, '_blank');
-            const t = translations[currentLang];
-            showToast(t.toastDownload);
+            return;
         }
+        document.getElementById('pinError').classList.add('show');
     }
 
     // Przypisanie przycisków pobierania
-    document.getElementById('heroDownloadBtn')?.addEventListener('click', startDownload);
-    document.getElementById('downloadNavBtn')?.addEventListener('click', startDownload);
+    document.getElementById('heroDownloadBtn')?.addEventListener('click', openDownloadModal);
+    document.getElementById('downloadNavBtn')?.addEventListener('click', openDownloadModal);
+    document.getElementById('modalCloseBtn')?.addEventListener('click', closeDownloadModal);
+    document.getElementById('checkPinBtn')?.addEventListener('click', checkPin);
+    document.getElementById('pinInput')?.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') checkPin();
+    });
+    document.getElementById('downloadModal')?.addEventListener('click', (e) => {
+        if (e.target === e.currentTarget) closeDownloadModal();
+    });
 
     function applyLanguage(lang) {
         const t = translations[lang];
@@ -580,14 +1518,32 @@
         document.getElementById('featuresTitle').innerHTML = t.featuresTitle;
         document.getElementById('videoTitle').innerHTML = t.videoTitle;
         
-        // Video placeholder
-        if(document.getElementById('videoPlaceholderText')) 
-            document.getElementById('videoPlaceholderText').innerText = t.videoText;
-        if(document.getElementById('videoHint')) 
-            document.getElementById('videoHint').innerText = t.videoHint;
-        
         // Footer
         document.getElementById('footerText').innerText = t.footerText;
+
+        // Modal
+        document.getElementById('modalTitle').innerHTML = t.modalTitle;
+        document.getElementById('modalDesc').innerText = t.modalDesc;
+        document.getElementById('checkPinText').innerText = t.checkPin;
+        document.getElementById('joinDiscordText').innerText = t.joinDiscord;
+        document.getElementById('modalCloseBtn').innerText = t.modalClose;
+        document.getElementById('pinInput').placeholder = t.pinPlaceholder;
+        document.getElementById('pinError').innerText = t.pinError;
+
+        // Badge & Stats
+        document.getElementById('heroBadge').innerText = t.heroBadge;
+        document.getElementById('statLabel1').innerText = t.statLabel1;
+        document.getElementById('statLabel2').innerText = t.statLabel2;
+        document.getElementById('statLabel3').innerText = t.statLabel3;
+        document.getElementById('statLabel4').innerText = t.statLabel4;
+        
+        // Footer links
+        document.getElementById('footerFeaturesLink').innerText = t.footerFeatures;
+        document.getElementById('footerVideoLink').innerText = t.footerVideo;
+        document.getElementById('footerSupportLink').innerText = t.footerSupport;
+        
+        // Reviews
+        document.getElementById('reviewsTitle').innerHTML = t.reviewsTitle;
 
         // Karty z zaletami
         const featuresData = [
@@ -596,7 +1552,9 @@
             {title: t.feature3_title, desc: t.feature3_desc, icon: "fa-tachometer-alt"},
             {title: t.feature4_title, desc: t.feature4_desc, icon: "fa-sync-alt"},
             {title: t.feature5_title, desc: t.feature5_desc, icon: "fa-headset"},
-            {title: t.feature6_title, desc: t.feature6_desc, icon: "fa-chart-line"}
+            {title: t.feature6_title, desc: t.feature6_desc, icon: "fa-chart-line"},
+            {title: t.feature7_title, desc: t.feature7_desc, icon: "fa-shield-alt"},
+            {title: t.feature8_title, desc: t.feature8_desc, icon: "fa-users"}
         ];
 
         const grid = document.getElementById('featuresGrid');
@@ -612,6 +1570,7 @@
 
         document.getElementById('currentLangLabel').innerText = lang === 'ru' ? 'Русский' : (lang === 'pl' ? 'Polski' : 'English');
         localStorage.setItem('vesper_lang', lang);
+        localStorage.setItem('vesper_lang_manual', 'true');
     }
 
     // Dropdown językowy
@@ -643,22 +1602,102 @@
     document.getElementById('navVideoLink')?.addEventListener('click', () => 
         document.getElementById('video')?.scrollIntoView({ behavior: 'smooth' }));
 
-    // Video placeholder
-    const videoDiv = document.getElementById('videoPlaceholder');
-    if(videoDiv){
-        videoDiv.addEventListener('click', () => {
-            const t = translations[currentLang];
-            videoDiv.innerHTML = `<div style="display:flex; flex-direction:column; align-items:center; gap:1rem;">
-                <i class="fas fa-film" style="font-size: 3rem;"></i>
-                <p>${t.videoPlaying} (Gameplay showcase)</p>
-                <button class="btn-primary" id="resetVideo" style="padding:0.5rem 1rem;">${t.videoBack}</button>
-            </div>`;
-            document.getElementById('resetVideo')?.addEventListener('click', (e) => { 
-                e.stopPropagation(); 
-                location.reload(); 
-            });
-        });
+    // Video section is now an iframe embed
+
+    // === PARTICLE STARS ===
+    const canvas = document.getElementById('particles');
+    const ctx = canvas.getContext('2d');
+    let stars = [];
+    
+    function resizeCanvas() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
     }
+    
+    function createStars() {
+        stars = [];
+        const count = Math.floor((canvas.width * canvas.height) / 8000);
+        for (let i = 0; i < count; i++) {
+            stars.push({
+                x: Math.random() * canvas.width,
+                y: Math.random() * canvas.height,
+                size: Math.random() * 1.8 + 0.3,
+                speed: Math.random() * 0.3 + 0.05,
+                opacity: Math.random() * 0.6 + 0.2,
+                twinkleSpeed: Math.random() * 0.02 + 0.005
+            });
+        }
+    }
+    
+    function animateStars() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        stars.forEach(s => {
+            s.y -= s.speed;
+            s.opacity += Math.sin(Date.now() * s.twinkleSpeed) * 0.01;
+            if (s.y < -5) { s.y = canvas.height + 5; s.x = Math.random() * canvas.width; }
+            ctx.beginPath();
+            ctx.arc(s.x, s.y, s.size, 0, Math.PI * 2);
+            ctx.fillStyle = `rgba(140, 170, 255, ${Math.max(0.1, Math.min(0.8, s.opacity))})`;
+            ctx.fill();
+        });
+        requestAnimationFrame(animateStars);
+    }
+    
+    resizeCanvas();
+    createStars();
+    animateStars();
+    window.addEventListener('resize', () => { resizeCanvas(); createStars(); });
+
+    // === HEADER SHRINK + SCROLL TOP ===
+    const headerEl = document.querySelector('header');
+    const scrollTopBtn = document.getElementById('scrollTopBtn');
+    
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 80) {
+            headerEl.classList.add('scrolled');
+        } else {
+            headerEl.classList.remove('scrolled');
+        }
+        if (window.scrollY > 400) {
+            scrollTopBtn.classList.add('visible');
+        } else {
+            scrollTopBtn.classList.remove('visible');
+        }
+    });
+
+    // === COUNTER ANIMATION ===
+    function animateCounter(el, target) {
+        const isPercent = target.includes('%');
+        const isPlus = target.includes('+');
+        const isSlash = target.includes('/');
+        if (isSlash) { el.textContent = target; return; }
+        const num = parseFloat(target.replace(/[^0-9.]/g, ''));
+        const duration = 1500;
+        const startTime = performance.now();
+        function update(now) {
+            const elapsed = now - startTime;
+            const progress = Math.min(elapsed / duration, 1);
+            const eased = 1 - Math.pow(1 - progress, 3);
+            let current = Math.floor(eased * num);
+            if (target.includes('.')) current = (eased * num).toFixed(1);
+            let display = current.toString();
+            if (isPlus) display += '+';
+            if (isPercent) display += '%';
+            el.textContent = display;
+            if (progress < 1) requestAnimationFrame(update);
+        }
+        requestAnimationFrame(update);
+    }
+
+    const statObserver = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+            if (e.isIntersecting && !e.target.dataset.counted) {
+                e.target.dataset.counted = 'true';
+                animateCounter(e.target, e.target.textContent);
+            }
+        });
+    }, { threshold: 0.5 });
+    document.querySelectorAll('.stat-number').forEach(el => statObserver.observe(el));
 
     // Animacje przy scrollowaniu
     const observer = new IntersectionObserver((entries) => { 
@@ -669,8 +1708,132 @@
     
     document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
 
-    // START - ustawiamy domyślny język na ANGIELSKI
-    applyLanguage('en');
+    // === MOUSE PARALLAX ON HERO ===
+    const heroSection = document.querySelector('.hero');
+    if (heroSection) {
+        document.addEventListener('mousemove', (e) => {
+            const x = (e.clientX / window.innerWidth - 0.5) * 15;
+            const y = (e.clientY / window.innerHeight - 0.5) * 15;
+            const heroTitle = document.getElementById('heroTitle');
+            if (heroTitle) {
+                heroTitle.style.transform = `translate(${x * 0.5}px, ${y * 0.5}px)`;
+            }
+        });
+    }
+
+    // === LOADING SCREEN ===
+    window.addEventListener('load', () => {
+        setTimeout(() => {
+            document.getElementById('loadingScreen')?.classList.add('hidden');
+        }, 1600);
+    });
+
+    // === GEO-BASED LANGUAGE DETECTION ===
+    function detectLangFromBrowser() {
+        const browserLang = (navigator.language || navigator.userLanguage || '').toLowerCase();
+        if (browserLang.startsWith('pl')) return 'pl';
+        if (browserLang.startsWith('ru') || browserLang.startsWith('uk') || browserLang.startsWith('be')) return 'ru';
+        return 'en';
+    }
+
+    function detectAndApplyLanguage() {
+        // If user manually picked a language, respect it
+        if (localStorage.getItem('vesper_lang_manual') === 'true') {
+            const saved = localStorage.getItem('vesper_lang');
+            if (saved) {
+                currentLang = saved;
+                applyLanguage(currentLang);
+                return;
+            }
+        }
+        
+        // Try browser language first (instant, always works)
+        const browserLang = detectLangFromBrowser();
+        
+        // Try IP geolocation as confirmation/override
+        fetch('https://ipapi.co/country_code/')
+            .then(r => r.text())
+            .then(code => {
+                const country = (code || '').trim().toUpperCase();
+                if (country === 'PL') {
+                    currentLang = 'pl';
+                } else if (['RU', 'BY', 'UA', 'KZ'].includes(country)) {
+                    currentLang = 'ru';
+                } else {
+                    currentLang = browserLang;
+                }
+                applyLanguage(currentLang);
+            })
+            .catch(() => {
+                // Fallback to browser language
+                currentLang = browserLang;
+                applyLanguage(currentLang);
+            });
+    }
+    
+    detectAndApplyLanguage();
+
+    // === 3D CARD TILT EFFECT ===
+    function init3DTilt() {
+        document.querySelectorAll('.feature-card, .review-card').forEach(card => {
+            if (card.dataset.tilt3d) return;
+            card.dataset.tilt3d = 'true';
+            card.addEventListener('mousemove', function(e) {
+                const rect = this.getBoundingClientRect();
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                const rotX = ((e.clientY - rect.top - centerY) / centerY) * -8;
+                const rotY = ((e.clientX - rect.left - centerX) / centerX) * 8;
+                this.style.transform = 'translateY(-10px) scale(1.02) rotateX(' + rotX + 'deg) rotateY(' + rotY + 'deg)';
+            });
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = '';
+            });
+        });
+    }
+    init3DTilt();
+
+    // Re-init tilt after language change rebuilds features grid
+    const featuresGridObs = document.getElementById('featuresGrid');
+    if (featuresGridObs) {
+        new MutationObserver(() => {
+            setTimeout(() => {
+                init3DTilt();
+                document.querySelectorAll('#featuresGrid .animate-on-scroll').forEach(el => observer.observe(el));
+            }, 50);
+        }).observe(featuresGridObs, { childList: true });
+    }
+
+    // === 3D VIDEO TILT ===
+    const videoEl = document.getElementById('videoPlaceholder');
+    if (videoEl) {
+        videoEl.addEventListener('mousemove', function(e) {
+            const rect = this.getBoundingClientRect();
+            const rotX = ((e.clientY - rect.top - rect.height / 2) / (rect.height / 2)) * -4;
+            const rotY = ((e.clientX - rect.left - rect.width / 2) / (rect.width / 2)) * 4;
+            this.style.transform = 'rotateX(' + rotX + 'deg) rotateY(' + rotY + 'deg) scale(1.01)';
+        });
+        videoEl.addEventListener('mouseleave', function() {
+            this.style.transform = '';
+        });
+    }
+
+    // === RIPPLE CLICK EFFECT ===
+    document.addEventListener('click', function(e) {
+        const btn = e.target.closest('.btn-primary, .btn-secondary, .btn-check-pin, .btn-discord, .btn-outline-light');
+        if (!btn) return;
+        const ripple = document.createElement('span');
+        ripple.className = 'ripple';
+        const rect = btn.getBoundingClientRect();
+        const size = Math.max(rect.width, rect.height);
+        ripple.style.width = ripple.style.height = size + 'px';
+        ripple.style.left = (e.clientX - rect.left - size / 2) + 'px';
+        ripple.style.top = (e.clientY - rect.top - size / 2) + 'px';
+        btn.style.position = 'relative';
+        btn.style.overflow = 'hidden';
+        btn.appendChild(ripple);
+        ripple.addEventListener('animationend', () => ripple.remove());
+    });
 </script>
 </body>
 </html>
