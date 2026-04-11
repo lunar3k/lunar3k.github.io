@@ -1381,13 +1381,12 @@
             <div class="aurora-orb"></div>
         </div>
         <div class="hero-glow-ring"></div>
-        <div class="subtitle-badge animate-on-scroll" id="heroBadge">🚀 FREE & UNDETECTED</div>
+        <div class="subtitle-badge animate-on-scroll" id="heroBadge">Version 2.2 🚀</div>
         <h2 class="animate-on-scroll floating" id="heroTitle">Maximum Possibilities</h2>
         <p class="animate-on-scroll delay-100" id="heroDesc">The best free client for a comfortable gaming experience, delivering the best gameplay experience. Extensive functionality and unrivaled performance.</p>
         <div class="hero-buttons animate-on-scroll delay-200">
             <button class="btn-primary" id="heroDownloadBtn"><i class="fas fa-download"></i> Download Now</button>
             <button class="btn-secondary" id="heroFeaturesBtn">Learn More</button>
-            <button class="btn-credits" id="heroCreditsBtn"><i class="fas fa-heart"></i> Credits</button>
         </div>
     </div>
 
@@ -1410,7 +1409,7 @@
                 <div class="stat-label" id="statLabel2">Modules</div>
             </div>
             <div class="stat-item animate-on-scroll delay-200">
-                <div class="stat-number" id="stat3">99.9%</div>
+                <div class="stat-number" id="stat3">ALWAYS</div>
                 <div class="stat-label" id="statLabel3">Uptime</div>
             </div>
             <div class="stat-item animate-on-scroll delay-300">
@@ -1500,22 +1499,7 @@
             </div>
         </div>
     </div>
-    <div class="container credits-section" id="credits">
-        <h2 class="section-title animate-on-scroll" id="creditsTitle">🏆 Credits 🏆</h2>
-        <div class="section-divider"></div>
-        <div class="credits-box animate-on-scroll delay-100">
-            <div class="credits-role">
-                <div class="credits-role-label" id="creditsOwnerLabel">Owner</div>
-                <div class="credits-role-names">Lunar3k, Krisper</div>
-            </div>
-            <div class="credits-role">
-                <div class="credits-role-label" id="creditsDevLabel">Developers</div>
-                <div class="credits-role-names">Lunar3k, Krisper, Kotlet</div>
-            </div>
-            <div class="credits-divider"></div>
-            <p class="credits-note" id="creditsNote">Client is based on Thunderhack Recode. AI assists us, but we do a lot of the work ourselves. The ClickGUI concept is inspired by Veltragossa by Mewinggs.</p>
-        </div>
-    </div>
+
     <div class="glow-separator"></div>
     <div class="container faq-section" id="faq">
         <h2 class="section-title animate-on-scroll" id="faqTitle">❓ FAQ ❓</h2>
@@ -1579,7 +1563,6 @@
     <div class="footer-content">
         <div class="footer-socials">
             <a href="https://dc.gg/vesperclient" target="_blank" title="Discord"><i class="fab fa-discord"></i></a>
-            <a href="https://t.me/Zmywarka01" target="_blank" title="Telegram"><i class="fab fa-telegram"></i></a>
             <a href="https://www.youtube.com/watch?v=-LW6w5aXL3A" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
         </div>
         <div class="footer-links">
@@ -1618,7 +1601,7 @@
     // ========================================
     // LINK DO POBRANIA
     // ========================================
-    const DOWNLOAD_URL = 'https://www.dropbox.com/scl/fi/7qh5o5i7lr5fg2bch04ld/vesperclient-2.1.jar?rlkey=hq9cu3qgkvlfodhvg16alkex1&st=5xr045i6&dl=1';
+    const DOWNLOAD_URL = 'https://www.dropbox.com/scl/fi/s24bfsggspxxl8alpmd1m/vesperclient-2.2.jar?rlkey=koqdmz5qzz95jsq2ulshyxqyz&st=ac1y2hlo&dl=1';
     
     // ========================================
     // TŁUMACZENIA - angielski jako domyślny
@@ -1679,7 +1662,7 @@
             pinError: "Invalid PIN. Join Discord to get a free PIN!",
             
             // Stats
-            heroBadge: "🚀 FREE & UNDETECTED",
+            heroBadge: "Version 2.2 🚀",
             statLabel1: "Users",
             statLabel2: "Modules",
             statLabel3: "Uptime",
@@ -1751,7 +1734,7 @@
             modalClose: "Zamknij",
             pinPlaceholder: "Wpisz PIN",
             pinError: "Nieprawidłowy PIN. Wejdź na Discorda po darmowy PIN!",
-            heroBadge: "🚀 DARMOWY & NIEWYKRYWALNY",
+            heroBadge: "Version 2.2 🚀",
             statLabel1: "Użytkowników",
             statLabel2: "Modułów",
             statLabel3: "Uptime",
@@ -1820,7 +1803,7 @@
             modalClose: "Закрыть",
             pinPlaceholder: "Введите PIN",
             pinError: "Неверный PIN. Зайдите на Discord за бесплатным PIN!",
-            heroBadge: "🚀 БЕСПЛАТНЫЙ & НЕОБНАРУЖИВАЕМЫЙ",
+            heroBadge: "Version 2.2 🚀",
             statLabel1: "Пользователей",
             statLabel2: "Модулей",
             statLabel3: "Uptime",
@@ -1953,13 +1936,6 @@
         // Reviews
         document.getElementById('reviewsTitle').innerHTML = t.reviewsTitle;
 
-        // Credits
-        document.getElementById('creditsTitle').innerHTML = t.creditsTitle;
-        document.getElementById('creditsOwnerLabel').innerText = t.creditsOwnerLabel;
-        document.getElementById('creditsDevLabel').innerText = t.creditsDevLabel;
-        document.getElementById('creditsNote').innerText = t.creditsNote;
-        document.getElementById('heroCreditsBtn').innerHTML = '<i class="fas fa-heart"></i> ' + t.creditsBtn;
-
         // FAQ
         document.getElementById('faqTitle').innerHTML = t.faqTitle;
         document.getElementById('faq1q').innerText = t.faq1q;
@@ -2027,8 +2003,6 @@
         document.getElementById('features')?.scrollIntoView({ behavior: 'smooth' }));
     document.getElementById('navVideoLink')?.addEventListener('click', () => 
         document.getElementById('video')?.scrollIntoView({ behavior: 'smooth' }));
-    document.getElementById('heroCreditsBtn')?.addEventListener('click', () => 
-        document.getElementById('credits')?.scrollIntoView({ behavior: 'smooth' }));
 
     // Video section is now an iframe embed
 
