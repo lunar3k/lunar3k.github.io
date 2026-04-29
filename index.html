@@ -3,16 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <title>ZEPHYRDLC</title>
+    <title>VESPERDLC</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800;14..32,900&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
-    <link rel="icon" type="image/png" sizes="32x32" href="zephyr.png">
-    <link rel="icon" type="image/png" sizes="192x192" href="zephyr.png">
-    <link rel="shortcut icon" href="zephyr.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="zephyr.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="logo.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="logo.png">
+    <link rel="shortcut icon" href="logo.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="logo.png">
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-title" content="ZEPHYRDLC">
-    <meta name="application-name" content="ZEPHYRDLC">
+    <meta name="apple-mobile-web-app-title" content="VESPERDLC">
+    <meta name="application-name" content="VESPERDLC">
     <meta name="theme-color" content="#050810">
     <style>
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -331,27 +331,16 @@
 <header class="navbar" id="navbar">
     <div class="nav-inner">
         <a class="nav-logo" href="#">
-            <img class="nav-logo-mark" src="zephyr.png" alt="Zephyr logo">
-            <span class="nav-logo-text">ZEPHYRDLC</span>
+            <img class="nav-logo-mark" src="logo.png" alt="Vesper logo">
+            <span class="nav-logo-text">VESPERDLC</span>
             <span class="nav-logo-badge">1.21.4</span>
         </a>
         <nav class="nav-links-inner">
-            <span class="nav-link" id="navFeaturesLink">Features</span>
-            <a class="nav-link" href="https://dc.gg/zephyrdlc" target="_blank" id="supportNavBtn">Support</a>
+            <span class="nav-link" id="navFeaturesLink">Funkcje</span>
+            <a class="nav-link" href="https://discord.gg/83KzSfycYQ" target="_blank" id="supportNavBtn">Wsparcie</a>
         </nav>
         <div class="nav-actions">
-            <div class="lang-sel" id="langSelWrapper">
-                <button class="lang-sel-btn" id="langSelBtn">
-                    <span class="lang-current-flag" id="currentLangFlag">&#127468;&#127463;</span>
-                    <span class="lang-current-label" id="currentLangLabel">English</span>
-                    <i class="fas fa-chevron-down" style="font-size:9px;opacity:.5"></i>
-                </button>
-                <div class="lang-sel-dropdown" id="langDropdown">
-                    <button class="lang-opt-btn" data-lang="pl">&#127477;&#127473; Polski</button>
-                    <button class="lang-opt-btn active" data-lang="en">&#127468;&#127463; English</button>
-                </div>
-            </div>
-            <button class="nav-cta-btn" id="downloadNavBtn"><i class="fas fa-crown"></i> Purchase</button>
+            <button class="nav-cta-btn" id="downloadNavBtn"><i class="fas fa-download"></i> Pobierz</button>
         </div>
     </div>
 </header>
@@ -360,26 +349,24 @@
     <section class="hero" id="hero">
         <div class="hero-content reveal in">
             <div class="hero-pill">
-                <span class="badge-pulse"></span>
-                <span id="heroBadge">3.0 BETA</span>
             </div>
             <h1 class="hero-title">
-                <span>ZEPHYRDLC</span>
-                <span class="gradient-text" id="heroTitle">Be Better Than Others</span>
+                <span>VESPERDLC</span>
+                <span class="gradient-text" id="heroTitle">Bądź lepszy od innych</span>
             </h1>
-            <p class="hero-desc" id="heroDesc">To premium client do Minecrafta dla osób, które chcą wygrywać fighty, mieć stabilne FPS i wszystko pod swoją rękę.</p>
+            <p class="hero-desc" id="heroDesc">To darmowy client do Minecrafta dla osób, które chcą wygrywać wszystkie walki</p>
             <div class="hero-btns">
                 <button class="btn-main" id="heroDownloadBtn">
-                    <i class="fas fa-crown"></i> <span id="heroBuyText">Purchase</span>
+                    <i class="fas fa-download"></i> <span id="heroBuyText">Pobierz</span>
                 </button>
                 <button class="btn-ghost" id="heroFeaturesBtn">
-                    <i class="fas fa-chevron-down" style="font-size:11px"></i> <span id="heroLearnMore">Learn More</span>
+                    <i class="fas fa-chevron-down" style="font-size:11px"></i> <span id="heroLearnMore">Zobacz funkcje</span>
                 </button>
             </div>
             <div class="hero-discord-strip">
                 <i class="fab fa-discord"></i>
-                <span id="heroDiscordText">Join our community on</span>
-                <a href="https://dc.gg/zephyrdlc" target="_blank">Discord</a>
+                <span id="heroDiscordText">Dołącz do społeczności na</span>
+                <a href="https://discord.gg/83KzSfycYQ" target="_blank">Discord</a>
             </div>
         </div>
         <div class="hero-right reveal in" style="transition-delay:.15s">
@@ -389,23 +376,23 @@
                     <div class="hstat-grid">
                         <div class="hstat-item">
                             <div class="hstat-icon"><i class="fas fa-users"></i></div>
-                            <div class="hstat-num" id="statValue1" style="font-size:1.4rem">DOZENS</div>
-                            <div class="hstat-lbl" id="statLabel1">Users</div>
+                            <div class="hstat-num" id="statValue1" style="font-size:1.4rem">PONAD 250</div>
+                            <div class="hstat-lbl" id="statLabel1">Użytkowników</div>
                         </div>
                         <div class="hstat-item">
                             <div class="hstat-icon"><i class="fas fa-puzzle-piece"></i></div>
-                            <div class="hstat-num">200+</div>
-                            <div class="hstat-lbl" id="statLabel2">Modules</div>
+                            <div class="hstat-num">BYPASSY</div>
+                            <div class="hstat-lbl" id="statLabel2">Najlepsze</div>
                         </div>
                         <div class="hstat-item">
                             <div class="hstat-icon"><i class="fas fa-server"></i></div>
-                            <div class="hstat-num" id="statValue3" style="font-size:1.4rem">ALWAYS</div>
-                            <div class="hstat-lbl" id="statLabel3">Uptime</div>
+                            <div class="hstat-num" id="statValue3" style="font-size:1.4rem">ZAWSZE</div>
+                            <div class="hstat-lbl" id="statLabel3">Działa</div>
                         </div>
                         <div class="hstat-item">
                             <div class="hstat-icon"><i class="fas fa-headset"></i></div>
                             <div class="hstat-num">24/7</div>
-                            <div class="hstat-lbl" id="statLabel4">Support</div>
+                            <div class="hstat-lbl" id="statLabel4">Wsparcie</div>
                         </div>
                     </div>
                 </div>
@@ -417,23 +404,22 @@
         <div class="premium-wrap reveal">
             <div class="premium-top">
                 <div>
-                    <div class="premium-title" id="premiumTitle">Made for sweaty gry, clutch momenty i pełną kontrolę.</div>
-                    <p class="premium-sub" id="premiumSub">ZEPHYRDLC łączy clean visuale, mocne moduły i płynne działanie w jednym kliencie do Minecrafta.</p>
+                    <div class="premium-title" id="premiumTitle">Stworzony pod kille, clutche i pełną kontrolę.</div>
+                    <p class="premium-sub" id="premiumSub">VesperDLC łączy clean visuale, mocne moduły i płynne działanie w jednym kliencie do Minecrafta.</p>
                 </div>
-                <div class="premium-badge"><i class="fas fa-gem"></i> <span id="premiumBadge">Premium Cheat Client</span></div>
             </div>
             <div class="premium-grid">
                 <article class="premium-card reveal" style="transition-delay:.05s">
                     <div class="premium-card-head">
                         <span class="premium-ico"><i class="fas fa-bolt"></i></span>
-                        <h3 id="premiumCard1Title">FPS bez dropów</h3>
+                        <h3 id="premiumCard1Title">Brak FPS dropów</h3>
                     </div>
-                    <p id="premiumCard1Desc">Lekki render trzyma płynność nawet wtedy, gdy na ekranie robi się totalny chaos.</p>
+                    <p id="premiumCard1Desc">Wszystko trzyma płynność nawet wtedy, gdy robi się totalny chaos.</p>
                 </article>
                 <article class="premium-card reveal" style="transition-delay:.1s">
                     <div class="premium-card-head">
                         <span class="premium-ico"><i class="fas fa-sliders-h"></i></span>
-                        <h3 id="premiumCard2Title">Twój setup, twój vibe</h3>
+                        <h3 id="premiumCard2Title">Twój ustawienia</h3>
                     </div>
                     <p id="premiumCard2Desc">Ustawiasz moduły, visuale i bindy po swojemu, a configi zmieniasz dosłownie w sekundę.</p>
                 </article>
@@ -442,41 +428,30 @@
                         <span class="premium-ico"><i class="fas fa-shield-alt"></i></span>
                         <h3 id="premiumCard3Title">Stałe update'y</h3>
                     </div>
-                    <p id="premiumCard3Desc">Regularne poprawki i aktywny support sprawiają, że klient po prostu działa jak trzeba.</p>
+                    <p id="premiumCard3Desc">Regularne poprawki i aktywny support sprawiają, że client po prostu działa jak trzeba.</p>
                 </article>
             </div>
         </div>
     </section>
 
-    <section class="features-section" id="features">
-        <div class="section-header reveal">
-            <div class="pill-label"><span class="pill-dot"></span> <span id="featuresPillText">Why it hits</span></div>
-            <h2 class="sec-title" id="featuresTitle">Wszystko, czego potrzebujesz do Minecraft PvP</h2>
-            <p class="sec-sub" id="featuresSub">Moduły, visuale i kontrola sklejone pod walki w Minecraft, a nie pod wszystko naraz.</p>
-        </div>
-        <div class="bento-grid" id="featuresGrid"></div>
-    </section>
-
     <section class="faq-section" id="faq">
         <div class="section-header reveal">
-            <div class="pill-label"><span class="pill-dot"></span> FAQ</div>
-            <h2 class="sec-title" id="faqTitle">&#10067; FAQ &#10067;</h2>
         </div>
         <div class="faq-grid">
             <div class="faq-col">
                 <div class="faq-item">
                     <button class="faq-question" onclick="toggleFaq(this)">
-                        <span id="faq1q">Czy ZEPHYRDLC jest płatny?</span>
+                        <span id="faq1q">Czy VESPERDLC jest darmowy?</span>
                         <div class="faq-ico"><i class="fas fa-plus"></i></div>
                     </button>
-                    <div class="faq-answer"><p id="faq1a">Tak. ZEPHYRDLC jest płatny. Wbij na Discorda i tam kupisz dostęp.</p></div>
+                    <div class="faq-answer"><p id="faq1a">Tak. VesperDLC jest całkowicie darmowy! Aby pobrać, wejdź na Discorda na kanał <b>pobierz</b>.</p></div>
                 </div>
                 <div class="faq-item">
                     <button class="faq-question" onclick="toggleFaq(this)">
                         <span id="faq2q">Czy to jest bezpieczne?</span>
                         <div class="faq-ico"><i class="fas fa-plus"></i></div>
                     </button>
-                    <div class="faq-answer"><p id="faq2a">Tak. Moduły i bypassy są regularnie testowane, żeby klient był stabilny i bezpieczny w użyciu.</p></div>
+                    <div class="faq-answer"><p id="faq2a">Tak. Moduły i bypassy są regularnie aktualizowane, żeby żaden Anti-Cheat nie był ci straszny.</p></div>
                 </div>
             </div>
             <div class="faq-col">
@@ -485,14 +460,14 @@
                         <span id="faq3q">Jaką wersję Minecrafta wspiera?</span>
                         <div class="faq-ico"><i class="fas fa-plus"></i></div>
                     </button>
-                    <div class="faq-answer"><p id="faq3a">Aktualnie ZEPHYRDLC wspiera Minecraft 1.21.4.</p></div>
+                    <div class="faq-answer"><p id="faq3a">Aktualnie VesperDLC wspiera Minecraft 1.21.4.</p></div>
                 </div>
                 <div class="faq-item">
                     <button class="faq-question" onclick="toggleFaq(this)">
-                        <span id="faq4q">Jak kupić dostęp?</span>
+                        <span id="faq4q">Jak pobrać klienta?</span>
                         <div class="faq-ico"><i class="fas fa-plus"></i></div>
                     </button>
-                    <div class="faq-answer"><p id="faq4a">Dołącz na Discorda i zrób wszystko według instrukcji na kanale sklepu.</p></div>
+                    <div class="faq-answer"><p id="faq4a">Wejdź na Discorda i przejdź na kanał <b>pobierz</b>, tam znajdziesz link do pobrania.</p></div>
                 </div>
             </div>
         </div>
@@ -504,25 +479,19 @@
     <div class="footer-inner">
         <div class="footer-top">
             <div>
-                <div class="footer-brand">ZEPHYRDLC</div>
-                <p class="footer-tagline" id="footerTagline">Premium client do Minecrafta dla graczy, którzy chcą speeda, kontroli i dobrego vibe'u.</p>
-                <a href="https://dc.gg/zephyrdlc" target="_blank" class="soc-btn discord"><i class="fab fa-discord"></i> Discord</a>
-                <a href="https://www.youtube.com/watch?v=-LW6w5aXL3A" target="_blank" class="soc-btn youtube"><i class="fab fa-youtube"></i> YouTube</a>
+                <div class="footer-brand">VESPERDLC</div>
+                <p class="footer-tagline" id="footerTagline">Darmowy client do Minecrafta dla graczy, którzy chcą zabijać, wszystkich przeciwników.</p>
+                <a href="https://discord.gg/83KzSfycYQ" target="_blank" class="soc-btn discord"><i class="fab fa-discord"></i> Discord</a>
+                <a href="https://www.tiktok.com/@vesper.client" target="_blank" class="soc-btn tiktok"><i class="fab fa-tiktok"></i> TikTok</a>
             </div>
             <div>
-                <span class="footer-col-title" id="footerNavTitle">Navigation</span>
-                <a href="#features" class="footer-link" id="footerFeaturesLink">Features</a>
-                <a href="#faq" class="footer-link">FAQ</a>
             </div>
             <div>
-                <span class="footer-col-title" id="footerLinksTitle">Links</span>
-                <a href="https://dc.gg/zephyrdlc" target="_blank" class="footer-link" id="footerSupportLink">Support</a>
-                <a href="https://dc.gg/zephyrdlc" target="_blank" class="footer-link" id="footerBuyLink">Purchase</a>
+                <span class="footer-col-title" id="footerLinksTitle">Linki</span>
+                <a href="https://discord.gg/83KzSfycYQ" target="_blank" class="footer-link" id="footerSupportLink">Wsparcie</a>
+                <a href="https://discord.gg/83KzSfycYQ" target="_blank" class="footer-link" id="footerBuyLink">Pobierz</a>
             </div>
         </div>
-        <div class="footer-bottom">
-            <span class="footer-copy" id="footerText">&#169; 2026 ZEPHYRDLC | Premium Minecraft Client</span>
-            <span class="footer-version">v1.21.4</span>
         </div>
     </div>
 </footer>
@@ -531,236 +500,25 @@
     <i class="fas fa-chevron-up"></i>
 </button>
 
-<div id="toast">Open Discord to buy access!</div>
+<div id="toast">Aby pobrać, dołącz na Discorda!</div>
 
 <div class="modal-overlay" id="downloadModal">
     <div class="modal-box">
-        <h3 id="modalTitle"><i class="fab fa-discord"></i> Odblokuj ZEPHYRDLC</h3>
-        <p id="modalDesc">Wbij na Discorda, kup dostęp i zgarnij wszystko: setup, ceny i pomoc od supportu.</p>
+        <h3 id="modalTitle"><i class="fab fa-discord"></i> Pobierz VESPERDLC</h3>
+        <p id="modalDesc">Aby pobrać klienta, dołącz na Discorda i przejdź na kanał <b>pobierz</b>.</p>
         <div class="modal-buttons">
-            <a href="https://dc.gg/zephyrdlc" target="_blank" style="text-decoration:none">
+            <a href="https://discord.gg/83KzSfycYQ" target="_blank" style="text-decoration:none">
                 <button class="btn-discord"><i class="fab fa-discord"></i> <span id="joinDiscordText">Dołącz na Discord</span></button>
             </a>
-            <button class="modal-close" id="modalCloseBtn">Close</button>
+            <button class="modal-close" id="modalCloseBtn">Zamknij</button>
         </div>
     </div>
 </div>
 
-<div class="modal-overlay" id="languageModal">
-    <div class="modal-box lang-modal-box">
-        <h3 id="languageModalTitle"><i class="fas fa-language"></i> Wybierz język / Choose language</h3>
-        <p id="languageModalDesc">Wybierz język strony, aby kontynuować. Select your language to continue.</p>
-        <div class="lang-modal-grid">
-            <button class="lang-modal-btn" id="langModalPlBtn" data-lang="pl">
-                <span class="lang-modal-flag">&#127477;&#127473;</span>
-                <span>Polski</span>
-            </button>
-            <button class="lang-modal-btn" id="langModalEnBtn" data-lang="en">
-                <span class="lang-modal-flag">&#127468;&#127463;</span>
-                <span>English</span>
-            </button>
-        </div>
-    </div>
-</div>
+
 
 <script>
-const translations = {
-    en: {
-        nav_features:"Features", nav_video:"Video", support:"Support", download_btn:"Buy Access",
-        heroTitle:"Play Better Than The Rest",
-        heroDesc:"A premium Minecraft cheat client for players who want cleaner fights, stable FPS and full control in PvP.",
-        heroBadge:"3.0 BETA", heroBuyText:"Buy Access", heroLearnMore:"See Features",
-        heroDiscordText:"Join our community on",
-        premiumTitle:"Built for sweaty matches, clutch moments and full control.",
-        premiumSub:"ZEPHYRDLC gives you clean visuals, strong modules and smooth performance in one Minecraft cheat client.",
-        premiumBadge:"Premium Cheat Client",
-        languageModalTitle:"Choose language",
-        languageModalDesc:"Choose your language to continue.",
-        premiumCard1Title:"Stable FPS", premiumCard1Desc:"Optimized rendering keeps your game smooth even when fights get messy.",
-        premiumCard2Title:"Your setup, your vibe", premiumCard2Desc:"Set modules, visuals and binds your way, then switch configs in seconds.",
-        premiumCard3Title:"Frequent updates", premiumCard3Desc:"Regular patches and active support keep everything stable and ready.",
-        featuresPill:"Why it hits", featuresTitle:"Everything You Need For Minecraft PvP",
-        featuresSub:"Modules, visuals and control made for Minecraft fights, not for every random game.",
-        feature1_title:"Clean visuals", feature1_desc:"HUD and visual tools keep your screen clear and easy to read mid-fight.",
-        feature2_title:"Deep customization", feature2_desc:"Adjust almost everything and switch configs fast depending on server or mood.",
-        feature3_title:"Performance first", feature3_desc:"Client and render optimizations keep gameplay smooth, even on weaker setups.",
-        feature4_title:"Regular updates", feature4_desc:"Patches and fixes drop often, so you stay ready for current meta.",
-        feature5_title:"Real support", feature5_desc:"If something breaks, support actually replies and helps you fix it.",
-        feature6_title:"Stacked modules", feature6_desc:"You get a wide module set for more control and more consistent fights.",
-        feature7_title:"Smart bypasses", feature7_desc:"Bypasses are tuned for safer sessions on popular Minecraft servers.",
-        feature8_title:"Active squad", feature8_desc:"Join Discord, swap configs, learn new tricks and stay up to date.",
-        videoTitle:"Video Review",
-        faqTitle:"FAQ",
-        faq1q:"Is ZEPHYRDLC paid?", faq1a:"Yes. ZEPHYRDLC is paid. Join our Discord if you want to buy access.",
-        faq2q:"Is it safe to use?", faq2a:"Yes. We test modules and bypasses all the time to keep it stable and safe.",
-        faq3q:"Which Minecraft version does it support?", faq3a:"Currently ZEPHYRDLC supports Minecraft 1.21.4.",
-        faq4q:"How do I buy access?", faq4a:"Join our Discord server and follow the purchase instructions in the shop channel.",
-        reviewsTitle:"Player Reactions",
-        statLabel1:"Users", statLabel2:"Modules", statLabel3:"Status", statLabel4:"Support", statValue1:"DOZENS", statValue3:"NONSTOP",
-        ctaPill:"Get Started", ctaTitle:"Ready to dominate Minecraft lobbies?", ctaSub:"Join ZEPHYRDLC and level up your PvP setup.", ctaBuy:"Buy Access",
-        ctaPoint1:"Instant access after purchase", ctaPoint2:"Fast setup in under 2 minutes", ctaPoint3:"Updates and support included",
-        ctaTrust:"Secure purchase with active 24/7 support", ctaDiscordBtn:"Discord",
-        ctaMini1:"Active users", ctaMini2:"Support", ctaMini3:"Current build",
-        footerTagline:"Premium Minecraft cheat client for players who want speed, control and style.",
-        footerNavTitle:"Navigation", footerLinksTitle:"Links",
-        footerText:"2026 ZEPHYRDLC | Premium Minecraft Client",
-        footerFeatures:"Features", footerVideo:"Video", footerSupport:"Support", footerBuy:"Buy Access",
-        modalTitle:"<i class='fab fa-discord'></i> Unlock ZEPHYRDLC",
-        modalDesc:"Join our Discord to buy access. Full setup info, pricing and support are waiting there.",
-        joinDiscord:"Join Discord", modalClose:"Close"
-    },
-    pl: {
-        nav_features:"Funkcje", nav_video:"Wideo", support:"Wsparcie", download_btn:"Kup dostęp",
-        heroTitle:"Bądź lepszy od innych",
-        heroDesc:"To premium client do Minecrafta dla osób, które chcą wygrywać fighty, mieć stabilne FPS i wszystko pod swoją rękę.",
-        heroBadge:"3.0 BETA", heroBuyText:"Kup dostęp", heroLearnMore:"Zobacz funkcje",
-        heroDiscordText:"Dołącz do społeczności na",
-        premiumTitle:"Stworzony pod sweaty gierki, clutch momenty i pełną kontrolę.",
-        premiumSub:"ZEPHYRDLC daje clean visuale, mocne moduły i płynne działanie w jednym kliencie do Minecrafta.",
-        premiumBadge:"Premium Cheat Client",
-        premiumCard1Title:"FPS bez dropów", premiumCard1Desc:"Lekki silnik i dobra optymalizacja trzymają stabilne FPS-y nawet przy większym chaosie.",
-        premiumCard2Title:"Twój setup, twój vibe", premiumCard2Desc:"Ustaw moduły, visuale i bindy pod siebie, a konfiguracje zmienisz dosłownie w chwilę.",
-        premiumCard3Title:"Stałe update'y", premiumCard3Desc:"Regularne poprawki i aktywne wsparcie sprawiają, że klient działa jak trzeba.",
-        languageModalTitle:"Wybierz język",
-        languageModalDesc:"Wybierz język strony, aby kontynuować.",
-        featuresPill:"Dlaczego to działa", featuresTitle:"Wszystko, czego potrzebujesz do Minecraft PvP",
-        featuresSub:"Moduły, visuale i kontrola zrobione pod walki w Minecraft, a nie pod każdą grę.",
-        feature1_title:"Czyste visuale", feature1_desc:"HUD i visuale są czytelne, więc w walce widzisz dokładnie to, co trzeba.",
-        feature2_title:"Pełna personalizacja", feature2_desc:"Dostosujesz prawie wszystko i szybko przełączysz config pod serwer albo tryb.",
-        feature3_title:"Wydajność przede wszystkim", feature3_desc:"Optymalizacje klienta i renderu trzymają płynność nawet na słabszym sprzęcie.",
-        feature4_title:"Regularne aktualizacje", feature4_desc:"Poprawki wpadają regularnie, żeby wszystko było świeże i gotowe na aktualną metę.",
-        feature5_title:"Konkretne wsparcie", feature5_desc:"Jak coś nie działa, support odpisuje i normalnie pomaga to ogarnąć.",
-        feature6_title:"Mocne moduły", feature6_desc:"Masz duży zestaw modułów, więc grasz pewniej i masz większą kontrolę.",
-        feature7_title:"Sprytne bypassy", feature7_desc:"Bypassy są stale dopracowywane pod bezpieczniejszą grę na popularnych serwerach Minecraft.",
-        feature8_title:"Aktywna ekipa", feature8_desc:"Wpadaj na Discorda, wymieniaj configi, ucz się trików i bądź na bieżąco.",
-        videoTitle:"Recenzja wideo",
-        faqTitle:"FAQ",
-        faq1q:"Czy ZEPHYRDLC jest płatny?", faq1a:"Tak. ZEPHYRDLC jest płatny. Dołącz na Discorda, jeśli chcesz kupić dostęp.",
-        faq2q:"Czy to jest bezpieczne?", faq2a:"Tak. Moduły i bypassy są regularnie testowane, żeby wszystko było stabilne i bezpieczne.",
-        faq3q:"Jaką wersję Minecrafta wspiera?", faq3a:"Aktualnie ZEPHYRDLC wspiera Minecraft 1.21.4.",
-        faq4q:"Jak kupić dostęp?", faq4a:"Dołącz na Discorda i zrób wszystko według instrukcji na kanale sklepu.",
-        reviewsTitle:"Opinie Graczy",
-        statLabel1:"Użytkownicy", statLabel2:"Moduły", statLabel3:"Status", statLabel4:"Wsparcie", statValue1:"DZIESIĄTKI", statValue3:"NONSTOP",
-        ctaPill:"Start", ctaTitle:"Gotowy robić lobby w Minecraft?", ctaSub:"Dołącz do ZEPHYRDLC i podkręć swój setup pod PvP.", ctaBuy:"Kup dostęp",
-        ctaPoint1:"Natychmiastowy dostęp po zakupie", ctaPoint2:"Szybka konfiguracja w mniej niż 2 minuty", ctaPoint3:"Aktualizacje i wsparcie w cenie",
-        ctaTrust:"Bezpieczny zakup i aktywne wsparcie 24/7", ctaDiscordBtn:"Discord",
-        ctaMini1:"Aktywni gracze", ctaMini2:"Wsparcie", ctaMini3:"Aktualny build",
-        footerTagline:"Premium client do Minecrafta dla graczy, którzy chcą speeda, kontroli i dobrego vibe'u.",
-        footerNavTitle:"Nawigacja", footerLinksTitle:"Linki",
-        footerText:"2026 ZEPHYRDLC | Premium Minecraft Client",
-        footerFeatures:"Funkcje", footerVideo:"Wideo", footerSupport:"Wsparcie", footerBuy:"Kup dostęp",
-        modalTitle:"<i class='fab fa-discord'></i> Odblokuj ZEPHYRDLC",
-        modalDesc:"Wbij na Discorda, kup dostęp i zgarnij wszystko: setup, ceny i pomoc od supportu.",
-        joinDiscord:"Dołącz na Discord", modalClose:"Zamknij"
-    }
-};
-
-const FEAT_ICONS = ["fa-palette","fa-sliders-h","fa-sync-alt","fa-headset","fa-shield-alt","fa-users"];
-const FEAT_TAGS  = ["Visual","Config","Updates","Support","Security","Community"];
-const FEAT_WIDE  = [false, false, false, false, false, false];
-
-let currentLang = ['pl','en'].includes(localStorage.getItem('zephyr_lang')) ? localStorage.getItem('zephyr_lang') : 'en';
-const LANG_META = {
-    pl: { flag: '\uD83C\uDDF5\uD83C\uDDF1', label: 'Polski' },
-    en: { flag: '\uD83C\uDDEC\uD83C\uDDE7', label: 'English' }
-};
-
 function g(id){ return document.getElementById(id); }
-function st(id, txt){ const el=g(id); if(el) el.innerText=txt; }
-function sh(id, html){ const el=g(id); if(el) el.innerHTML=html; }
-
-function applyLanguage(lang) {
-    const t = translations[lang];
-    if (!t) return;
-    st('navFeaturesLink', t.nav_features);
-    st('supportNavBtn', t.support);
-    sh('downloadNavBtn', '<i class="fas fa-crown"></i> ' + t.download_btn);
-    st('heroTitle', t.heroTitle);
-    st('heroDesc', t.heroDesc);
-    st('heroBadge', t.heroBadge);
-    st('heroBuyText', t.heroBuyText);
-    st('heroLearnMore', t.heroLearnMore);
-    st('heroDiscordText', t.heroDiscordText);
-    st('premiumTitle', t.premiumTitle);
-    st('premiumSub', t.premiumSub);
-    st('premiumBadge', t.premiumBadge);
-    st('premiumCard1Title', t.premiumCard1Title); st('premiumCard1Desc', t.premiumCard1Desc);
-    st('premiumCard2Title', t.premiumCard2Title); st('premiumCard2Desc', t.premiumCard2Desc);
-    st('premiumCard3Title', t.premiumCard3Title); st('premiumCard3Desc', t.premiumCard3Desc);
-    st('statLabel1', t.statLabel1); st('statLabel2', t.statLabel2);
-    st('statLabel3', t.statLabel3); st('statLabel4', t.statLabel4);
-    st('statValue1', t.statValue1);
-    st('statValue3', t.statValue3);
-    st('statLabelA', t.statLabel1); st('statLabelB', t.statLabel2);
-    st('statLabelC', t.statLabel3); st('statLabelD', t.statLabel4);
-    st('featuresPillText', t.featuresPill);
-    st('featuresTitle', t.featuresTitle);
-    st('featuresSub', t.featuresSub);
-    st('reviewsTitle', t.reviewsTitle);
-    st('faqTitle', t.faqTitle);
-    st('faq1q',t.faq1q); st('faq1a',t.faq1a);
-    st('faq2q',t.faq2q); st('faq2a',t.faq2a);
-    st('faq3q',t.faq3q); st('faq3a',t.faq3a);
-    st('faq4q',t.faq4q); st('faq4a',t.faq4a);
-    st('ctaPill',t.ctaPill); st('ctaTitle',t.ctaTitle); st('ctaSub',t.ctaSub); st('ctaBuyText',t.ctaBuy);
-    st('ctaPoint1',t.ctaPoint1); st('ctaPoint2',t.ctaPoint2); st('ctaPoint3',t.ctaPoint3);
-    st('ctaTrust',t.ctaTrust); st('ctaDiscordBtn',t.ctaDiscordBtn);
-    st('ctaMini1',t.ctaMini1); st('ctaMini2',t.ctaMini2); st('ctaMini3',t.ctaMini3);
-    st('footerTagline',t.footerTagline);
-    st('footerNavTitle',t.footerNavTitle); st('footerLinksTitle',t.footerLinksTitle);
-    st('footerText','\u00A9 ' + t.footerText);
-    st('footerFeaturesLink',t.footerFeatures);
-    st('footerSupportLink',t.footerSupport); st('footerBuyLink',t.footerBuy);
-    sh('modalTitle',t.modalTitle); st('modalDesc',t.modalDesc);
-    st('joinDiscordText',t.joinDiscord); st('modalCloseBtn',t.modalClose);
-    st('languageModalTitle',t.languageModalTitle);
-    st('languageModalDesc',t.languageModalDesc);
-    st('currentLangLabel', (LANG_META[lang] || LANG_META.en).label);
-    st('currentLangFlag', (LANG_META[lang] || LANG_META.en).flag);
-    document.querySelectorAll('.lang-opt-btn').forEach(b => b.classList.toggle('active', b.dataset.lang === lang));
-    document.querySelectorAll('.lang-modal-btn').forEach(b => b.classList.toggle('active', b.dataset.lang === lang));
-    buildGrid(t);
-    localStorage.setItem('zephyr_lang', lang);
-    localStorage.setItem('zephyr_lang_manual','true');
-}
-
-function buildGrid(t) {
-    const grid = g('featuresGrid');
-    if (!grid) return;
-    const data = [
-        {title:t.feature1_title,desc:t.feature1_desc},
-        {title:t.feature2_title,desc:t.feature2_desc},
-        {title:t.feature4_title,desc:t.feature4_desc},
-        {title:t.feature5_title,desc:t.feature5_desc},
-        {title:t.feature7_title,desc:t.feature7_desc},
-        {title:t.feature8_title,desc:t.feature8_desc}
-    ];
-    grid.innerHTML = data.map((f,i) => `
-        <div class="bento-card${FEAT_WIDE[i]?' bento-wide':''}">
-            <div class="card-shine"></div>
-            <div class="card-tag">${FEAT_TAGS[i]}</div>
-            <div class="card-icon-wrap"><i class="fas ${FEAT_ICONS[i]}"></i></div>
-            <div class="card-title">${f.title}</div>
-            <div class="card-desc">${f.desc}</div>
-        </div>`).join('');
-    initShine();
-    grid.querySelectorAll('.bento-card').forEach((el,i) => {
-        el.style.transitionDelay = (i*0.06)+'s';
-        revealObs.observe(el);
-    });
-}
-
-const lsw = g('langSelWrapper');
-g('langSelBtn').addEventListener('click', e => { e.stopPropagation(); lsw.classList.toggle('open'); });
-document.querySelectorAll('.lang-opt-btn').forEach(b => b.addEventListener('click', () => {
-    currentLang = b.dataset.lang; applyLanguage(currentLang); lsw.classList.remove('open');
-}));
-document.addEventListener('click', () => lsw.classList.remove('open'));
-
-function openLanguageModal() { g('languageModal')?.classList.add('active'); }
-function closeLanguageModal() { g('languageModal')?.classList.remove('active'); }
-g('langModalPlBtn')?.addEventListener('click', () => { currentLang = 'pl'; applyLanguage(currentLang); closeLanguageModal(); });
-g('langModalEnBtn')?.addEventListener('click', () => { currentLang = 'en'; applyLanguage(currentLang); closeLanguageModal(); });
 
 function openDownloadModal() { g('downloadModal').classList.add('active'); }
 function closeDownloadModal() { g('downloadModal').classList.remove('active'); }
@@ -841,11 +599,6 @@ document.addEventListener('click', e => {
     btn.appendChild(sp);
     sp.addEventListener('animationend',()=>sp.remove());
 });
-
-const savedLang = localStorage.getItem('zephyr_lang');
-currentLang = ['pl','en'].includes(savedLang) ? savedLang : ((navigator.language || '').toLowerCase().startsWith('pl') ? 'pl' : 'en');
-applyLanguage(currentLang);
-openLanguageModal();
 </script>
 </body>
 </html>
